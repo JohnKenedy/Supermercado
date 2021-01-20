@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Supermercado</string>
+    <string name="fab_des">Carrinho</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="wish_list">Wishlist</string>
+    <string name="profile">Profile</string>
+    <string name="example_item">Example product</string>
+    <string name="categories">Categorias</string>
+    <string name="view_all">Ver todas</string>
+    <string name="trending">Mais vendidos</string>
+    <string name="price">R$: 1,99</string>
+    <string name="unit_um_kg">Unidade: 1kg</string>
+    <string name="feature">Essencial</string>
 </resources>
