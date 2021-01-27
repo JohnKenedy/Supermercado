@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "217848414999",
+    "project_id": "supermercadob",
+    "storage_bucket": "supermercadob.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217848414999:android:6df98760d08a257668ad52",
+        "android_client_info": {
+          "package_name": "com.canytech.supermercado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217848414999-a7ierp0lg47gf78537pq6a09rvlqt9oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByVcVFpPNyJR9pSnf1XWsNFfmUKQVGZG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217848414999-a7ierp0lg47gf78537pq6a09rvlqt9oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
