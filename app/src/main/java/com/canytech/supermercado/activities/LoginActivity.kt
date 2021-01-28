@@ -3,9 +3,12 @@ package com.canytech.supermercado.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.canytech.supermercado.R
+import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.supermercado.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -19,6 +22,17 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         btn_login_sing_google.setOnClickListener(this)
         text_view_login_sing_up.setOnClickListener(this)
 
+    }
+
+    fun userLoggedInSuccess(user: User) {
+
+        hideProgressDialog()
+
+        Log.i("Name: ", user.name)
+        Log.i("Email: ", user.email)
+
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
     }
 
     override fun onClick(view: View?) {
@@ -78,12 +92,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
 
-                    hideProgressDialog()
-
                     if (task.isSuccessful) {
-                        showErrorSnackBar("You are logged in successfully.", false)
+                        FireStoreClass().getUserDetails(this@LoginActivity)
 
                     } else {
+                        hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
                 }
