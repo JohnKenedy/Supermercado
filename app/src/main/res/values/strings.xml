@@ -41,6 +41,7 @@
     <string name="male">MAN</string>
     <string name="female">WOMAN</string>
     <string name="email">Email:</string>
-    <string name="number">Cell phone</string>
-    <string name="address">Address</string>
+    <string name="number">Cell phone:</string>
+    <string name="address">Address:</string>
+    <string name="storage_permissiob_denied">Oops, you just denied the permission for storage. You can also allow it from settings.</string>
 </resources>
