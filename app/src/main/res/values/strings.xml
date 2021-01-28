@@ -18,6 +18,7 @@
     <string name="mobile_number">Mobile no.</string>
     <string name="or">OR</string>
     <string name="sing_in_google">Sign in with Google</string>
+    <string name="sing_up_google">Sign Up with Google</string>
     <string name="no_have_account">Don\'t have an account? <font color='#FECE01'><b>Sign Up</b></font></string>
     <string name="forgot_password">forgot password?</string>
     <string name="sing_up">Sign Up</string>
@@ -26,7 +27,11 @@
     <string name="email_address">Email address</string>
     <string name="terms_conditions">By signing up you\'re accepting the Terms and Conditions</string>
     <string name="error_msg_enter_name">Please, enter your name.</string>
-    <string name="error_msg_enter_number">Please enter number.</string>
+    <string name="error_msg_enter_password">Please enter password.</string>
+    <string name="error_msg_confirm_password">Please confirm password.</string>
     <string name="error_msg_enter_email">Please enter email.</string>
     <string name="register_completed">Thanks for registering!</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="please_wait">Please Wait&#8230;</string>
 </resources>

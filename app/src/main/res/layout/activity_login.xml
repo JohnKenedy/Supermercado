@@ -87,21 +87,52 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp"
-            android:hint="@string/mobile_number"
+            android:hint="@string/email_address"
             app:boxCornerRadiusBottomEnd="13dp"
             app:boxCornerRadiusBottomStart="13dp"
             app:boxCornerRadiusTopEnd="13dp"
             app:boxCornerRadiusTopStart="13dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_login_number"
+                android:id="@+id/edit_text_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_local_phone_24"
+                android:drawableStart="@drawable/ic_baseline_email_24"
                 android:drawablePadding="5dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="5dp"
+            android:hint="@string/password"
+            app:boxCornerRadiusBottomEnd="13dp"
+            app:boxCornerRadiusBottomStart="13dp"
+            app:boxCornerRadiusTopEnd="13dp"
+            app:boxCornerRadiusTopStart="13dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="5dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/text_view_login_forgot_password"
+            android:layout_width="wrap_content"
+            android:text="@string/forgot_password"
+            android:textColor="@color/yellow"
+            android:layout_marginEnd="15dp"
+            android:layout_gravity="end"
+            android:fontFamily="@font/montserrat_light"
+            android:layout_height="wrap_content" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login_sing_in"
