@@ -23,9 +23,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
-                R.id.text_view_login_forgot_password -> {
-                }
 
+                R.id.text_view_login_forgot_password -> {
+                    val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+                    startActivity(intent)
+                }
                 R.id.btn_login_sing_in -> {
                     loginRegisteredUser()
                 }
