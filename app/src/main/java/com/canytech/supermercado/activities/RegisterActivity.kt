@@ -2,7 +2,10 @@ package com.canytech.supermercado.activities
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.Toast
 import com.canytech.supermercado.R
+import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.supermercado.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -19,6 +22,7 @@ class RegisterActivity : BaseActivity() {
         }
 
     }
+
     //Validates if all fields have been filled
     private fun validateRegisterDetails(): Boolean {
         return when {
@@ -37,13 +41,14 @@ class RegisterActivity : BaseActivity() {
                 false
             }
 
-            TextUtils.isEmpty(edit_text_register_confirm_password.text.toString().trim() { it <= ' ' }) -> {
+            TextUtils.isEmpty(
+                edit_text_register_confirm_password.text.toString().trim() { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.error_msg_confirm_password), true)
                 false
             }
 
             else -> {
-               // showErrorSnackBar(resources.getString(R.string.register_completed), false)
+                // showErrorSnackBar(resources.getString(R.string.register_completed), false)
                 true
             }
         }
@@ -60,29 +65,43 @@ class RegisterActivity : BaseActivity() {
 
             //Create a register a user with email and password
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener (
+                .addOnCompleteListener(
                     OnCompleteListener<AuthResult> { task ->
-
-                        hideProgressDialog()
 
                         //Registration is successfully
                         if (task.isSuccessful) {
+
                             //Firebase registered user
                             val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                            showErrorSnackBar(
-                                "You are registered successfully. Your user id is ${firebaseUser.uid}",
-                                false
+                            val user = User(
+                                firebaseUser.uid,
+                                edit_text_register_name.text.toString().trim { it <= ' ' },
+                                edit_text_register_email.text.toString().trim { it <= ' ' },
                             )
 
-                            FirebaseAuth.getInstance().signOut()
-                            finish()
+                            FireStoreClass().registerUser(this@RegisterActivity, user)
+
+                           // FirebaseAuth.getInstance().signOut()
+                           // finish()
 
                         } else {
+                            hideProgressDialog()
                             //If the registering is not successful -> show error message
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     })
         }
+    }
+
+    fun userRegistrationSuccess() {
+
+        hideProgressDialog()
+
+        Toast.makeText(
+            this@RegisterActivity,
+            resources.getString(R.string.register_success),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
