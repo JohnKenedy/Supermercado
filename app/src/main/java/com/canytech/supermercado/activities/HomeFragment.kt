@@ -1,12 +1,11 @@
-package com.canytech.supermercado
+package com.canytech.supermercado.activities
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import com.canytech.supermercado.R
 
 class HomeFragment  : Fragment() {
 

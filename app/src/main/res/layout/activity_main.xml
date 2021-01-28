@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment_main"
-        android:name="com.canytech.supermercado.HomeFragment"
+        android:name="com.canytech.supermercado.activities.HomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/no_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:context=".MainActivity"
+        tools:context=".activities.MainActivity"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="26dp">
 

@@ -1,9 +1,9 @@
-package com.canytech.supermercado
+package com.canytech.supermercado.activities
 
 import android.app.Dialog
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.canytech.supermercado.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dialog_progress.*
 

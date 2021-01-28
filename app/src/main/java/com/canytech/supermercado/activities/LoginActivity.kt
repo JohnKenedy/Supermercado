@@ -1,10 +1,11 @@
-package com.canytech.supermercado
+package com.canytech.supermercado.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import com.canytech.supermercado.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
