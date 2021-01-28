@@ -13,7 +13,7 @@
     <string name="unit_um_kg">Unidade: 1kg</string>
     <string name="feature">Essencial</string>
     <string name="sing_in">Sing In</string>
-    <string name="welcome">Welcome</string>
+    <string name="welcome">Welcome, </string>
     <string name="welcome_desc">Sing In and get all the groceries at your doorstep</string>
     <string name="mobile_number">Mobile no.</string>
     <string name="or">OR</string>
@@ -38,4 +38,9 @@
     <string name="fotgot_desc">Enter your e-mail address we\'ll send you a emai to reset your password</string>
     <string name="email_sent_success">Email sent successfully to reset your password!</string>
     <string name="register_success">You are registered successfully.</string>
+    <string name="male">MAN</string>
+    <string name="female">WOMAN</string>
+    <string name="email">Email:</string>
+    <string name="number">Cell phone</string>
+    <string name="address">Address</string>
 </resources>
