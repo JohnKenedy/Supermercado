@@ -12,25 +12,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Supermercado">
-        <activity android:name=".activities.UserProfileActivity"
+        <activity
+            android:name=".activities.DashboardActivity"
+            android:label="@string/title_activity_dashboard" />
+
+        <activity
+            android:name=".activities.UserProfileActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
+
         <activity android:name=".activities.BaseActivity" />
         <activity
             android:name=".activities.RegisterActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +52,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
     </application>
 
