@@ -1,4 +1,4 @@
-package com.canytech.supermercado.activities
+package com.canytech.supermercado.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

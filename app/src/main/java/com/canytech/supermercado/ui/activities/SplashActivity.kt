@@ -1,4 +1,4 @@
-package com.canytech.supermercado.activities
+package com.canytech.supermercado.ui.activities
 
 import android.content.Intent
 import android.os.Build

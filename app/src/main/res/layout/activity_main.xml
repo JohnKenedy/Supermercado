@@ -6,17 +6,6 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <fragment
-        android:id="@+id/fragment_main"
-        android:name="com.canytech.supermercado.activities.HomeFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/home_fragment" />
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator"
         android:layout_width="0dp"
@@ -26,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/no_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:context=".activities.MainActivity"
+        tools:context=".ui.activities.MainActivity"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="26dp">
 

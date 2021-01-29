@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import com.canytech.supermercado.activities.LoginActivity
-import com.canytech.supermercado.activities.RegisterActivity
-import com.canytech.supermercado.activities.UserProfileActivity
+import com.canytech.supermercado.ui.activities.LoginActivity
+import com.canytech.supermercado.ui.activities.RegisterActivity
+import com.canytech.supermercado.ui.activities.UserProfileActivity
 import com.canytech.supermercado.models.User
 import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth

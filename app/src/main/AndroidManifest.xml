@@ -13,33 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Supermercado">
         <activity
-            android:name=".activities.DashboardActivity"
-            android:label="@string/title_activity_dashboard" />
+            android:name="com.canytech.supermercado.ui.activities.DashboardActivity"
+            android:label="@string/title_dashboard" />
 
         <activity
-            android:name=".activities.UserProfileActivity"
+            android:name="com.canytech.supermercado.ui.activities.UserProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name="com.canytech.supermercado.ui.activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".activities.BaseActivity" />
+        <activity android:name="com.canytech.supermercado.ui.activities.BaseActivity" />
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name="com.canytech.supermercado.ui.activities.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.canytech.supermercado.ui.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.canytech.supermercado.ui.activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity">
@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.canytech.supermercado.ui.activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />

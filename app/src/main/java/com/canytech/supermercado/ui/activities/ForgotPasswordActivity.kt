@@ -1,4 +1,4 @@
-package com.canytech.supermercado.activities
+package com.canytech.supermercado.ui.activities
 
 import android.os.Bundle
 import android.widget.Toast
