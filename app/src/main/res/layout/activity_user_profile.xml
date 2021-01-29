@@ -42,6 +42,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                android:scaleType="centerCrop"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
                 android:src="@drawable/profile_photo"
