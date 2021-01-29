@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -23,6 +24,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var mUserDetails: User
 
+    private var mSelectedImageFileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +68,12 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
                 //Update info Profile (ADDRESS and MOBILE NUMBER)
                 R.id.btn_user_profile_submit -> {
+
+                    showProgressDialog(resources.getString(R.string.please_wait))
+
+                    FireStoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
+
+                    /*
                     if (validateUserProfileDetails()) {
 
                         val userHashMap = HashMap<String, Any>()
@@ -84,7 +92,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
                         //create key and value to Firebase, EX: key: gender value: male,
                         // key: userAddress value: Address typed
-                        if (mobileNumber.isNotEmpty()||userAddress.isNotEmpty()) {
+                        if (mobileNumber.isNotEmpty() || userAddress.isNotEmpty()) {
                             userHashMap[Constants.MOBILE] = mobileNumber.toLong()
                             userHashMap[Constants.ADDRESS] = userAddress
                         }
@@ -95,7 +103,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                         FireStoreClass().updateUserProfileData(this, userHashMap)
 
                         //showErrorSnackBar("Your details are valid. You can update them.", false)
-                    }
+                    } */
                 }
             }
         }
@@ -103,9 +111,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     fun userProfileUpdateSuccess() {
         hideProgressDialog()
-        Toast.makeText(this@UserProfileActivity,
-        resources.getString(R.string.profile_uptade_success),
-        Toast.LENGTH_SHORT
+        Toast.makeText(
+            this@UserProfileActivity,
+            resources.getString(R.string.profile_uptade_success),
+            Toast.LENGTH_SHORT
         ).show()
 
         startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
@@ -140,9 +149,11 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             if (requestCode == Constants.PICK_IMAGE_REQUEST_CODE) {
                 if (data != null) {
                     try {
-                        val selectedImageFileUri = data.data!!
+                        //URI of selected image from phone storage
+                        mSelectedImageFileUri = data.data!!
 
-                        GlideLoader(this).loadUserPicture(selectedImageFileUri, profile_image)
+                        //Profile Image
+                        GlideLoader(this).loadUserPicture(mSelectedImageFileUri!!, profile_image)
                     } catch (e: IOException) {
                         e.printStackTrace()
                         Toast.makeText(
@@ -171,4 +182,14 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
+
+    fun imageUploadSuccess(imageURL: String) {
+        hideProgressDialog()
+        Toast.makeText(
+            this@UserProfileActivity,
+            "Your image is uploaded seccessfully. Image URL is $imageURL",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
 }
