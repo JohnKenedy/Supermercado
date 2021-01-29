@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.supermercado.R
+import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.User
 import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
@@ -19,21 +20,24 @@ import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
+
+    private lateinit var mUserDetails: User
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-        var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)) {
 
             // Get the user details fom intent as a ParcelableExtra
-            userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
+            mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        text_view_user_profile_name.text = userDetails.name
-        text_view_user_profile_email.text = userDetails.email
-        text_view_user_profile_number.text = userDetails.mobile.toString()
-        text_view_user_profile_address.text = userDetails.address
+        text_view_user_profile_name.text = mUserDetails.name
+        text_view_user_profile_email.text = mUserDetails.email
+        text_view_user_profile_number.text = mUserDetails.mobile.toString()
+        text_view_user_profile_address.text = mUserDetails.address
 
         profile_image.setOnClickListener(this@UserProfileActivity)
         btn_user_profile_submit.setOnClickListener(this@UserProfileActivity)
@@ -60,13 +64,53 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                     }
                 }
 
+                //Update info Profile (ADDRESS and MOBILE NUMBER)
                 R.id.btn_user_profile_submit -> {
                     if (validateUserProfileDetails()) {
-                        showErrorSnackBar("Your details are valid. You can update them.", false)
+
+                        val userHashMap = HashMap<String, Any>()
+
+                        val mobileNumber =
+                            edit_text_register_number.text.toString().trim { it <= ' ' }
+
+                        val userAddress =
+                            edit_text_register_address.text.toString().trim { it <= ' ' }
+
+                        val gender = if (radio_btn_user_profile_male.isChecked) {
+                            Constants.MALE
+                        } else {
+                            Constants.FEMALE
+                        }
+
+                        //create key and value to Firebase, EX: key: gender value: male,
+                        // key: userAddress value: Address typed
+                        if (mobileNumber.isNotEmpty()||userAddress.isNotEmpty()) {
+                            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+                            userHashMap[Constants.ADDRESS] = userAddress
+                        }
+                        userHashMap[Constants.GENDER] = gender
+
+                        showProgressDialog(resources.getString(R.string.please_wait))
+
+                        FireStoreClass().updateUserProfileData(this, userHashMap)
+
+                        //showErrorSnackBar("Your details are valid. You can update them.", false)
                     }
                 }
             }
         }
+    }
+
+    fun userProfileUpdateSuccess() {
+        hideProgressDialog()
+        Toast.makeText(this@UserProfileActivity,
+        resources.getString(R.string.profile_uptade_success),
+        Toast.LENGTH_SHORT
+        ).show()
+
+        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        finish()
+
     }
 
     override fun onRequestPermissionsResult(

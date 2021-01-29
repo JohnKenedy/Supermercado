@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.canytech.supermercado.activities.LoginActivity
 import com.canytech.supermercado.activities.RegisterActivity
+import com.canytech.supermercado.activities.UserProfileActivity
 import com.canytech.supermercado.models.User
 import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -86,6 +87,33 @@ class FireStoreClass {
                         activity.hideProgressDialog()
                     }
                 }
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
+
+        mFireStore.collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.userProfileUpdateSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while updating the user details.",
+                    e
+                )
             }
     }
 }
