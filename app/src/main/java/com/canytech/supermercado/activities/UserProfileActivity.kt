@@ -23,8 +23,8 @@ import java.io.IOException
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var mUserDetails: User
-
     private var mSelectedImageFileUri: Uri? = null
+    private var mUserProfileImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,45 +68,52 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
                 //Update info Profile (ADDRESS and MOBILE NUMBER)
                 R.id.btn_user_profile_submit -> {
-
-                    showProgressDialog(resources.getString(R.string.please_wait))
-
-                    FireStoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
-
-                    /*
                     if (validateUserProfileDetails()) {
-
-                        val userHashMap = HashMap<String, Any>()
-
-                        val mobileNumber =
-                            edit_text_register_number.text.toString().trim { it <= ' ' }
-
-                        val userAddress =
-                            edit_text_register_address.text.toString().trim { it <= ' ' }
-
-                        val gender = if (radio_btn_user_profile_male.isChecked) {
-                            Constants.MALE
-                        } else {
-                            Constants.FEMALE
-                        }
-
-                        //create key and value to Firebase, EX: key: gender value: male,
-                        // key: userAddress value: Address typed
-                        if (mobileNumber.isNotEmpty() || userAddress.isNotEmpty()) {
-                            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-                            userHashMap[Constants.ADDRESS] = userAddress
-                        }
-                        userHashMap[Constants.GENDER] = gender
-
                         showProgressDialog(resources.getString(R.string.please_wait))
 
-                        FireStoreClass().updateUserProfileData(this, userHashMap)
-
-                        //showErrorSnackBar("Your details are valid. You can update them.", false)
-                    } */
+                        //Uploading Image to Profile (Cloud FireStore)
+                        if (mSelectedImageFileUri != null)
+                            FireStoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
+                        else {
+                            updateUserProfileDetails()
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private fun updateUserProfileDetails() {
+
+        val userHashMap = HashMap<String, Any>()
+
+        val mobileNumber =
+            edit_text_register_number.text.toString().trim { it <= ' ' }
+
+        val userAddress =
+            edit_text_register_address.text.toString().trim { it <= ' ' }
+
+        val gender = if (radio_btn_user_profile_male.isChecked) {
+            Constants.MALE
+        } else {
+            Constants.FEMALE
+        }
+
+        if (mUserProfileImageURL.isNotEmpty()) {
+            userHashMap[Constants.IMAGE] = mUserProfileImageURL
+        }
+
+        //create key and value to Firebase, EX: key: gender value: male,
+        // key: userAddress value: Address typed
+        if (mobileNumber.isNotEmpty() || userAddress.isNotEmpty()) {
+            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+            userHashMap[Constants.ADDRESS] = userAddress
+        }
+        userHashMap[Constants.GENDER] = gender
+
+        //showProgressDialog(resources.getString(R.string.please_wait))
+
+        FireStoreClass().updateUserProfileData(this, userHashMap)
     }
 
     fun userProfileUpdateSuccess() {
@@ -184,12 +191,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun imageUploadSuccess(imageURL: String) {
-        hideProgressDialog()
-        Toast.makeText(
-            this@UserProfileActivity,
-            "Your image is uploaded seccessfully. Image URL is $imageURL",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
+        //hideProgressDialog()
 
+        mUserProfileImageURL = imageURL
+        updateUserProfileDetails()
+
+    }
 }
