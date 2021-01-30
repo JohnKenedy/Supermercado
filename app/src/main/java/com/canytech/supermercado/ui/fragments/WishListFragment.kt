@@ -19,9 +19,7 @@ class WishListFragment : Fragment() {
     ): View? {
 //        notificationsViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_search, container, false)
-        val textView: TextView = root.findViewById(R.id.text_orders)
-            textView.text = "This is Wishlist Fragment"
+        val root = inflater.inflate(R.layout.fragment_wishlist, container, false)
 
         return root
     }

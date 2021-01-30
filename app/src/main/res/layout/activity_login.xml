@@ -40,10 +40,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_weight="1"
+                    android:textAlignment="center"
                     android:fontFamily="@font/montserrat_medium"
                     android:text="@string/sing_in"
                     android:textColor="@color/white"
-                    android:textSize="32sp" />
+                    android:textSize="28sp" />
 
                 <ImageView
                     android:id="@+id/imageView2"

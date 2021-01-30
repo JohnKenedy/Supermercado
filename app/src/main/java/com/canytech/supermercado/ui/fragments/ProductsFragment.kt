@@ -1,9 +1,8 @@
 package com.canytech.supermercado.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.canytech.supermercado.R
@@ -11,9 +10,6 @@ import com.canytech.supermercado.R
 class ProductsFragment : Fragment() {
 
 //    private lateinit var homeViewModel: HomeViewModel
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
 
     override fun onCreateView(
         inflater: LayoutInflater,

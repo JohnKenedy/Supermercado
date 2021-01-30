@@ -38,8 +38,8 @@
     <string name="fotgot_desc">Enter your e-mail address we\'ll send you a emai to reset your password</string>
     <string name="email_sent_success">Email sent successfully to reset your password!</string>
     <string name="register_success">You are registered successfully.</string>
-    <string name="male">MAN</string>
-    <string name="female">WOMAN</string>
+    <string name="male">Man</string>
+    <string name="female">Woman</string>
     <string name="email">Email:</string>
     <string name="number">Cell phone:</string>
     <string name="address">Address:</string>
@@ -48,13 +48,20 @@
     <string name="error_msg_complete_all_fields">Please, complete all fields to continue</string>
     <string name="profile_uptade_success">Your profile is updated successfully.</string>
 
-<!--    <string name="title_activity_dashboard">MainActivity</string>-->
+    <!--    <string name="title_activity_dashboard">MainActivity</string>-->
     <string name="title_home">Home</string>
     <string name="title_wishlist">WishList</string>
     <string name="title_search">Search</string>
     <string name="title_profile">Profile</string>
-    
+
     <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
+    <string name="add_addres">Add address</string>
+    <string name="logout">Logout</string>
+    <string name="edit">Edit</string>
+    <string name="addresses">Addresses</string>
+    <string name="gender">Gender</string>
+
 
 </resources>

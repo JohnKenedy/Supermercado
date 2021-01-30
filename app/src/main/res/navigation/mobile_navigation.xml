@@ -27,5 +27,5 @@
         android:id="@+id/navigation_profile"
         android:name="com.canytech.supermercado.ui.fragments.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/activity_user_profile" />
+        tools:layout="@layout/fragment_profile" />
 </navigation>
