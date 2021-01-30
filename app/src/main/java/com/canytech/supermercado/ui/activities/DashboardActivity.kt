@@ -19,6 +19,8 @@ class DashboardActivity : BaseActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.hide()
+
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
@@ -26,7 +28,7 @@ class DashboardActivity : BaseActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_search, R.id.navigation_wishlist
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

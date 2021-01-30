@@ -8,16 +8,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.canytech.supermercado.databinding.FragmentDashboardBinding
+import com.canytech.supermercado.R
 
-class DashboardFragment : Fragment() {
+class SearchFragment : Fragment() {
 
 //    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,17 +24,8 @@ class DashboardFragment : Fragment() {
     ): View? {
 //        dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        val textView: TextView = binding.textDashboard
-
-            textView.text = "This is Dashboard Fragment"
+        val root = inflater.inflate(R.layout.fragment_search, container, false)
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

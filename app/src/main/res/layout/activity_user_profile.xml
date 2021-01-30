@@ -13,6 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingBottom="15dp"
             android:layout_height="match_parent">
 
             <ImageView
@@ -91,7 +92,7 @@
                 android:text="@string/email"
                 android:textStyle="bold"
                 android:textColor="@color/black2"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/text_view_user_profile_email"
@@ -102,7 +103,7 @@
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/montserrat_light"
                 android:text="@string/email_address"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txt_number"
@@ -116,7 +117,7 @@
                 android:text="@string/number"
                 android:textStyle="bold"
                 android:textColor="@color/black2"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/text_view_user_profile_number"
@@ -127,7 +128,7 @@
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/montserrat_light"
                 android:text="@string/mobile_number"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txt_address"
@@ -141,7 +142,7 @@
                 android:text="@string/address"
                 android:textStyle="bold"
                 android:textColor="@color/black2"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/text_view_user_profile_address"
@@ -151,8 +152,8 @@
                 app:layout_constraintTop_toTopOf="@id/txt_address"
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/montserrat_light"
-                android:text="@string/mobile_number"
-                android:textSize="20sp" />
+                android:text="@string/address"
+                android:textSize="16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -261,6 +262,8 @@
                 android:fontFamily="@font/montserrat_medium"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+
                 android:layout_margin="15dp"
                 android:text="@string/submit"
                 android:textAllCaps="false"

@@ -7,19 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.canytech.supermercado.ui.fragments.HomeFragment"
+        android:name="com.canytech.supermercado.ui.fragments.ProductsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_products" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.canytech.supermercado.ui.fragments.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_search"
+        android:name="com.canytech.supermercado.ui.fragments.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.canytech.supermercado.activities.ui.notifications.ProfileFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_wishlist"
+        android:name="com.canytech.supermercado.ui.fragments.WishListFragment"
+        android:label="@string/title_wishlist"
+        tools:layout="@layout/fragment_wishlist" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.canytech.supermercado.ui.fragments.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/activity_user_profile" />
 </navigation>

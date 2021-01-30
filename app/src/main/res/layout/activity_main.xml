@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="26dp">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             app:backgroundTint="@color/no_color"
             app:elevation="1dp"
             app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/main_menu" />
+            app:menu="@menu/main_menu" />-->
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"

@@ -20,7 +20,7 @@ import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
 
-class UserProfileActivity : BaseActivity(), View.OnClickListener {
+open class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var mUserDetails: User
     private var mSelectedImageFileUri: Uri? = null
