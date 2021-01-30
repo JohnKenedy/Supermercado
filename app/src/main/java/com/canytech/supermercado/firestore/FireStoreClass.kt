@@ -5,10 +5,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import com.canytech.supermercado.ui.activities.LoginActivity
-import com.canytech.supermercado.ui.activities.RegisterActivity
-import com.canytech.supermercado.ui.activities.UserProfileActivity
 import com.canytech.supermercado.models.User
+import com.canytech.supermercado.ui.activities.*
 import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -80,6 +78,9 @@ class FireStoreClass {
                     is LoginActivity -> {
                         activity.userLoggedInSuccess(user)
                     }
+                    is SettingsActivity -> {
+                        activity.userDetailsSuccess(user)
+                    }
                 }
             }
 
@@ -87,6 +88,9 @@ class FireStoreClass {
 
                 when (activity) {
                     is LoginActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is SettingsActivity -> {
                         activity.hideProgressDialog()
                     }
                 }

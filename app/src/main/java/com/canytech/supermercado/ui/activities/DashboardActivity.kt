@@ -9,9 +9,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.canytech.supermercado.R
 import com.canytech.supermercado.databinding.ActivityDashboardBinding
+import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.supermercado.models.User
+import com.canytech.supermercado.utils.GlideLoader
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_dashboard.view.*
+import kotlinx.android.synthetic.main.activity_settings.*
+import kotlinx.android.synthetic.main.activity_settings.profile_image
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class DashboardActivity : BaseActivity() {
 

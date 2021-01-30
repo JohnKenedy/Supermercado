@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/no_color"
-                android:paddingBottom="65dp"
+                android:paddingBottom="55dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/frete_gratis" />
 

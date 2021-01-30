@@ -30,17 +30,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/profile"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/imageView"
                 app:layout_constraintTop_toTopOf="@id/imageView" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
+                android:id="@+id/profile_fragment_image"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
@@ -52,22 +52,7 @@
                 app:layout_constraintTop_toBottomOf="@id/imageView" />
 
             <TextView
-                android:id="@+id/welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="5dp"
-                android:fontFamily="@font/montserrat_medium"
-                android:text="@string/welcome"
-                android:textColor="@color/black2"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@id/text_view_user_profile_name"
-                app:layout_constraintStart_toStartOf="@id/profile_image"
-                app:layout_constraintTop_toBottomOf="@id/profile_image" />
-
-            <TextView
-                android:id="@+id/text_view_user_profile_name"
+                android:id="@+id/text_view_fragment_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -76,26 +61,52 @@
                 android:text="@string/name"
                 android:textColor="@color/black2"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@id/profile_image"
-                app:layout_constraintStart_toEndOf="@id/welcome"
-                app:layout_constraintTop_toBottomOf="@id/profile_image" />
+                app:layout_constraintEnd_toEndOf="@id/profile_fragment_image"
+                app:layout_constraintStart_toStartOf="@id/profile_fragment_image"
+                app:layout_constraintTop_toBottomOf="@id/profile_fragment_image" />
+
+            <TextView
+                android:id="@+id/txt_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/gender"
+                android:textColor="@color/black2"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_fragment_name" />
+
+            <TextView
+                android:id="@+id/text_view_fragment_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/montserrat_light"
+                android:text="@string/male"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/txt_gender"
+                app:layout_constraintTop_toTopOf="@id/txt_gender" />
+
 
             <TextView
                 android:id="@+id/txt_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:text="@string/email"
                 android:textColor="@color/black2"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_user_profile_name" />
+                app:layout_constraintTop_toBottomOf="@id/text_view_fragment_gender" />
 
             <TextView
-                android:id="@+id/text_view_user_profile_email"
+                android:id="@+id/text_view_fragment_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -120,7 +131,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_email" />
 
             <TextView
-                android:id="@+id/text_view_user_profile_number"
+                android:id="@+id/text_view_fragment_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -145,7 +156,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_number" />
 
             <TextView
-                android:id="@+id/text_view_user_profile_address"
+                android:id="@+id/text_view_fragment_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"

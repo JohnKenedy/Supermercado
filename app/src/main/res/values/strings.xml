@@ -61,7 +61,7 @@
     <string name="logout">Logout</string>
     <string name="edit">Edit</string>
     <string name="addresses">Addresses</string>
-    <string name="gender">Gender</string>
+    <string name="gender">Gender:</string>
 
 
 </resources>
