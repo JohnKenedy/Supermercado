@@ -43,7 +43,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:text="@string/sing_up"
                     android:textColor="@color/white"
-                    android:textSize="32sp" />
+                    android:textSize="28sp" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -53,7 +53,7 @@
                     android:layout_weight="1"
                     android:padding="15dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/stayhome_bergao" />
+                    android:src="@drawable/stayhome_bergao_png" />
 
             </LinearLayout>
 

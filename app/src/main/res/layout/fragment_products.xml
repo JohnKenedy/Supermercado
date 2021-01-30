@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:elevation="4dp"
-            android:src="@drawable/stayhome_bergao"
+            android:src="@drawable/stayhome_bergao_png"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,9 +48,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/no_color"
-                android:paddingBottom="55dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/frete_gratis" />
+                android:src="@drawable/free_delivery_poster" />
 
         </androidx.cardview.widget.CardView>
 
