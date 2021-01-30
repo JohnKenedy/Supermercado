@@ -126,10 +126,10 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
     private fun updateUserProfileDetails() {
         val userHashMap = HashMap<String, Any>()
 
-        val name = edit_text_register_name.text.toString().trim { it <= ' ' }
-        if (name != mUserDetails.name) {
-            userHashMap[Constants.NAME] = name
-        }
+//        val name = text_view_user_profile_name.text.toString().trim { it <= ' ' }
+//        if (name != mUserDetails.name) {
+//            userHashMap[Constants.NAME] = name
+//        }
 
         val mobileNumber =
             edit_text_register_number.text.toString().trim { it <= ' ' }
