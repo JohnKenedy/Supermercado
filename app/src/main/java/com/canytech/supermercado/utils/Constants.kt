@@ -17,7 +17,7 @@ object Constants {
 
     const val MALE: String = "male"
     const val FEMALE: String = "female"
-
+    const val NAME: String = "name"
     const val MOBILE: String = "mobile"
     const val ADDRESS: String = "address"
     const val GENDER: String = "gender"

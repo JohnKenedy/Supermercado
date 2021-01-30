@@ -62,6 +62,8 @@
     <string name="edit">Edit</string>
     <string name="addresses">Addresses</string>
     <string name="gender">Gender:</string>
+    <string name="title_complete_profile">Complete Profile</string>
+    <string name="edit_profile">Edit profile</string>
 
 
 </resources>

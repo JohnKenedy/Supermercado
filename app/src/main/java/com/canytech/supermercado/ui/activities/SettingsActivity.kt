@@ -22,21 +22,13 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_settings)
         setupActionBar()
 
-        text_view_edit.setOnClickListener(this)
-        btn_settings_logout.setOnClickListener(this)
+        text_view_edit.setOnClickListener(this@SettingsActivity)
+        btn_settings_logout.setOnClickListener(this@SettingsActivity)
     }
 
-    private fun setupActionBar() {
-
-        setSupportActionBar(toolbar_settings_activity)
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
-        }
-
-        toolbar_settings_activity.setNavigationOnClickListener { onBackPressed() }
+    override fun onResume() {
+        super.onResume()
+        getUserDetails()
     }
 
     private fun getUserDetails() {
@@ -56,11 +48,6 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         text_view_settings_number.text = "${user.mobile}"
     }
 
-    override fun onResume() {
-        super.onResume()
-        getUserDetails()
-    }
-
     override fun onClick(v: View?) {
         if (v != null) {
             when (v.id) {
@@ -69,11 +56,12 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
                     val intent = Intent(this@SettingsActivity, UserProfileActivity::class.java)
                     intent.putExtra(Constants.EXTRA_USER_DETAILS, mUserDetails)
                     startActivity(intent)
-
                 }
 
                 R.id.btn_settings_logout -> {
+
                     FirebaseAuth.getInstance().signOut()
+
                     val intent = Intent(this@SettingsActivity, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
@@ -82,4 +70,18 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
+
+    private fun setupActionBar() {
+
+        setSupportActionBar(toolbar_settings_activity)
+
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_white)
+        }
+
+        toolbar_settings_activity.setNavigationOnClickListener { onBackPressed() }
+    }
+
 }
