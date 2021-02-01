@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.canytech.supermercado.R
 
-class ProductsFragment : Fragment() {
+class ProductsFragment : BaseFragment() {
 
 //    private lateinit var homeViewModel: HomeViewModel
 

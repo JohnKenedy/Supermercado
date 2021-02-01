@@ -6,12 +6,12 @@
     <string name="wish_list">Wishlist</string>
     <string name="profile">Profile</string>
     <string name="example_item">Example product</string>
-    <string name="categories">Categorias</string>
-    <string name="view_all">Ver todas</string>
-    <string name="trending">Mais vendidos</string>
+    <string name="categories">Categories</string>
+    <string name="view_all">View all</string>
+    <string name="trending">Trending</string>
     <string name="price">R$: 1,99</string>
     <string name="unit_um_kg">Unidade: 1kg</string>
-    <string name="feature">Essencial</string>
+    <string name="feature">Feature</string>
     <string name="sing_in">Sing In</string>
     <string name="welcome">Welcome, </string>
     <string name="welcome_desc">Sing In and get all the groceries at your doorstep</string>
@@ -64,6 +64,8 @@
     <string name="gender">Gender:</string>
     <string name="title_complete_profile">Complete Profile</string>
     <string name="edit_profile">Edit profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
