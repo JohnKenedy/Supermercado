@@ -5,8 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import androidx.fragment.app.Fragment
+import com.canytech.supermercado.models.ProductFeature
+import com.canytech.supermercado.models.ProductTrending
 import com.canytech.supermercado.models.User
 import com.canytech.supermercado.ui.activities.*
+import com.canytech.supermercado.ui.fragments.ProductsFragment
 import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -124,9 +128,9 @@ class FireStoreClass {
             }
     }
 
-    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?) {
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType: String) {
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
-            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+            imageType + System.currentTimeMillis() + "."
                     + Constants.getFileExtension(activity, imageFileURI)
         )
 
@@ -145,6 +149,13 @@ class FireStoreClass {
                         is UserProfileActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddTrendingProductActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
+                        is AddFeatureProductActivity -> {
+                            activity.imageFeatureUploadSuccess(uri.toString())
+                        }
+
                     }
                 }
         }
@@ -154,6 +165,12 @@ class FireStoreClass {
                     is UserProfileActivity -> {
                         activity.hideProgressDialog()
                     }
+                    is AddTrendingProductActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is AddFeatureProductActivity -> {
+                        activity.hideProgressDialog()
+                    }
                 }
                 // If have some error, It's printed in Log
                 Log.e(
@@ -161,8 +178,87 @@ class FireStoreClass {
                     exception.message,
                     exception
                 )
-
             }
-
     }
+
+    fun uploadTrendingProductDetails(activity: AddTrendingProductActivity, productTrendingInfo: ProductTrending) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document()
+            .set(productTrendingInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading the product details.",
+                    e
+                )
+            }
+    }
+
+    fun getTrendingProductsList(fragment: Fragment) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products List", document.documents.toString())
+                val productsList: ArrayList<ProductTrending> = ArrayList()
+                for (i in document.documents) {
+
+                    val product = i.toObject(ProductTrending::class.java)
+                    product!!.product_id = i.id
+
+                    productsList.add(product)
+                }
+
+                when(fragment) {
+                    is ProductsFragment -> {
+                        fragment.successProductsListFromFireStore(productsList)
+                    }
+                }
+            }
+    }
+
+    fun uploadFeatureProductDetails(activity: AddFeatureProductActivity, productFeatureInfo: ProductFeature) {
+        mFireStore.collection(Constants.FEATURES)
+            .document()
+            .set(productFeatureInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productFeatureUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading the product details.",
+                    e
+                )
+            }
+    }
+
+    fun getFeatureProductsList(fragment: Fragment) {
+        mFireStore.collection(Constants.FEATURES)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products Feature List", document.documents.toString())
+                val productsFeatureList: ArrayList<ProductFeature> = ArrayList()
+                for (i in document.documents) {
+
+                    val productFeature = i.toObject(ProductFeature::class.java)
+                    productFeature!!.product_id = i.id
+
+                    productsFeatureList.add(productFeature)
+                }
+
+                when(fragment) {
+                    is ProductsFragment -> {
+                        fragment.successFeatureProductsListFromFireStore(productsFeatureList)
+                    }
+                }
+            }
+    }
+
 }

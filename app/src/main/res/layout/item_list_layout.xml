@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_marginEnd="12dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/item_bg"
+            android:layout_width="170dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_poster"
+            android:backgroundTint="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/info_item_product"
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_poster"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/item_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_bg" />
+
+
+        <ImageView
+            android:id="@+id/item_img_product"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:src="@drawable/bananana"
+            app:layout_constraintBottom_toBottomOf="@id/info_item_product"
+            app:layout_constraintEnd_toEndOf="@id/info_item_product"
+            app:layout_constraintStart_toStartOf="@id/info_item_product"
+            app:layout_constraintTop_toTopOf="@id/info_item_product" />
+
+        <TextView
+            android:id="@+id/item_title_product"
+            android:layout_width="0dp"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/example_item"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_img_product" />
+
+        <TextView
+            android:id="@+id/old_price_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/sign_price"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/item_old_price_product"
+            app:layout_constraintStart_toEndOf="@id/item_price_product"
+            app:layout_constraintTop_toTopOf="@id/item_old_price_product" />
+
+        <TextView
+            android:id="@+id/item_old_price_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:text="@string/old_price"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/old_price_coin"
+            app:layout_constraintTop_toBottomOf="@id/item_title_product" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/black2"
+            app:layout_constraintBottom_toBottomOf="@id/item_old_price_product"
+            app:layout_constraintEnd_toEndOf="@id/item_old_price_product"
+            app:layout_constraintStart_toStartOf="@id/item_old_price_product"
+            app:layout_constraintTop_toTopOf="@id/item_old_price_product" />
+
+        <TextView
+            android:id="@+id/price_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/sign_price"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/item_price_product"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/item_price_product" />
+
+        <TextView
+            android:id="@+id/item_price_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="@string/price"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/price_coin"
+            app:layout_constraintTop_toTopOf="@+id/item_old_price_product" />
+
+        <LinearLayout
+            android:id="@+id/ll_unit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/unit_bg"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@id/item_bg"
+            app:layout_constraintTop_toBottomOf="@id/item_price_product">
+
+            <TextView
+                android:id="@+id/textView_title_item_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/unit_um_kg"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textView_item_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/gramas"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/ll_unit"
+            app:layout_constraintEnd_toEndOf="@id/item_bg"
+            app:layout_constraintTop_toTopOf="@id/ll_unit">
+
+            <ImageView
+                android:id="@+id/add_to_cart"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@color/yellow"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_shopping_cart_24" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

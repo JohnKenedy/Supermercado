@@ -9,8 +9,8 @@
     <string name="categories">Categories</string>
     <string name="view_all">View all</string>
     <string name="trending">Trending</string>
-    <string name="price">R$: 1,99</string>
-    <string name="unit_um_kg">Unidade: 1kg</string>
+    <string name="price">1,99</string>
+    <string name="unit_um_kg">Unit:</string>
     <string name="feature">Feature</string>
     <string name="sing_in">Sing In</string>
     <string name="welcome">Welcome, </string>
@@ -66,6 +66,31 @@
     <string name="edit_profile">Edit profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_add_product">Add Trending Product</string>
+    <string name="action_add_feature_product">Add Feature Product</string>
+    <string name="action_add_category_product">Add Category</string>
+    <string name="et_hint_product_title">Product Title</string>
+    <string name="et_hint_product_price">Product Price ($)</string>
+    <string name="et_hint_product_old_price">Product Old Price ($)</string>
+    <string name="et_hint_product_description">Product Description</string>
+    <string name="et_hint_product_quantity">Product Quantity</string>
+
+    <string name="error_msg_select_product_image">Please select product image.</string>
+    <string name="error_msg_enter_product_title">Please enter product title.</string>
+    <string name="error_msg_enter_product_old_price">Please enter product old price.</string>
+    <string name="error_msg_enter_product_price">Please enter product price.</string>
+    <string name="error_msg_enter_product_description">Please enter product description.</string>
+    <string name="error_msg_enter_product_quantity">Please enter product quantity.</string>
+    <string name="error_msg_enter_product_category">Please enter product category.</string>
+
+    <string name="old_price">2.99</string>
+    <string name="et_hint_product_category">Product Category</string>
+    <string name="product_uploaded_success_mesage">Your product was uploaded successfully.</string>
+    <string name="categories_id"><![CDATA[1 - Personal Care, 2 - Chocolate, biscuits & snacks, 3 - Fruits & Vegetables, 4 - Breakfast, dairy & cereals, 5 - Baby care, 6 - Grains, wheat & rice, 7 - Beverages]]></string>
+    <string name="sign_price">$</string>
+    <string name="unit_ex">1 kg, 200 g, 1 Unit., Box</string>
+    <string name="et_hint_product_unit">Unit</string>
+    <string name="gramas">500g</string>
 
 
 </resources>
