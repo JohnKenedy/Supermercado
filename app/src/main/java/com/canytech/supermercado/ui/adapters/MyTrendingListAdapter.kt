@@ -1,12 +1,14 @@
 package com.canytech.supermercado.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.canytech.supermercado.R
 import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.ui.activities.ProductDetailActivity
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_list_layout.view.*
 
@@ -30,6 +32,12 @@ open class MyTrendingListAdapter(
             holder.itemView.item_price_product.text = model.price
             holder.itemView.textView_item_unit.text = model.unit
         }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ProductDetailActivity::class.java)
+            context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {

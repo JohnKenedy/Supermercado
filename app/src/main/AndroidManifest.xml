@@ -12,7 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Supermercado">
-        <activity android:name=".ui.activities.SettingsActivity" />
+
+        <activity android:name=".ui.activities.ProductDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity android:name=".ui.activities.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ui.activities.DashboardActivity"
             android:label="@string/title_dashboard"
@@ -29,7 +38,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
-
         <activity android:name=".ui.activities.BaseActivity" />
         <activity
             android:name=".ui.activities.RegisterActivity"

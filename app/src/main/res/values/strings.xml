@@ -64,7 +64,7 @@
     <string name="gender">Gender:</string>
     <string name="title_complete_profile">Complete Profile</string>
     <string name="edit_profile">Edit profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_add_product">Add Trending Product</string>
     <string name="action_add_feature_product">Add Feature Product</string>
@@ -92,5 +92,12 @@
     <string name="et_hint_product_unit">Unit</string>
     <string name="gramas">500g</string>
 
+    <string name="title_product_details">Product Detail</string>
+    <string name="lbl_product_description">Description</string>
+    <string name="lbl_product_description_ex">Banana, pacoba ou pacova[1] é uma pseudobaga da bananeira, uma planta herbácea vivaz acaule da família Musaceae (género Musa - além do género Ensete, que produz as chamadas "falsas bananas"). São cultivadas em 130 países. Originárias do sudeste da Ásia são atualmente cultivadas em praticamente todas as regiões tropicais do planeta.Vulgarmente, inclusive para efeitos comerciais, o termo "banana" refere-se às frutas de polpa macia e doce que podem ser consumidas cruas. Contudo, existem variedades de cultivo, de polpa mais rija e de casca mais firme e verde, geralmente designadas por plátanos, em língua espanhola, banana-pão ou banana-da-terra, em português, ou plantains, em inglês, que são consumidas cozinhadas (assadas, cozidas ou fritas), constituindo o alimento base de muitas populações de regiões tropicais. A maioria das bananas para exportação é do primeiro tipo, ainda que apenas 10 a 15 por cento da produção mundial seja para exportação, sendo os Estados Unidos e a União Europeia as principais potências importadoras.</string>
+    <string name="lbl_product_details_stock_quantity">Stock Quantity</string>
+    <string name="in_stock">In stock:</string>
+    <string name="out_of_stock">Out of stock:</string>
+    <string name="number_ex">10</string>
 
 </resources>

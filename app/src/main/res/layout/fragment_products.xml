@@ -82,6 +82,7 @@
             android:id="@+id/rv_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:padding="2dp"
             android:layout_margin="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +118,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_trending"
             android:layout_width="0dp"
+            android:padding="2dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,6 +175,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_feature"
+            android:padding="2dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"

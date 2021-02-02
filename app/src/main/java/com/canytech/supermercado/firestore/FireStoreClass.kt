@@ -200,7 +200,6 @@ class FireStoreClass {
 
     fun getTrendingProductsList(fragment: Fragment) {
         mFireStore.collection(Constants.PRODUCTS)
-            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Products List", document.documents.toString())
@@ -240,7 +239,6 @@ class FireStoreClass {
 
     fun getFeatureProductsList(fragment: Fragment) {
         mFireStore.collection(Constants.FEATURES)
-            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Products Feature List", document.documents.toString())
