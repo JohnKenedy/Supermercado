@@ -1,5 +1,6 @@
 package com.canytech.supermercado.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -28,6 +29,10 @@ class DashboardActivity : BaseActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+
+        fab_go_to_cart.setOnClickListener {
+            startActivity(Intent(this@DashboardActivity, CartListActivity::class.java))
+        }
 
         val navController = findNavController(R.id.nav_host_fragment_activity_dashboard)
         // Passing each menu ID as a set of Ids because each

@@ -284,7 +284,6 @@
                 android:fontFamily="@font/montserrat_medium"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
-
                 android:text="@string/submit"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

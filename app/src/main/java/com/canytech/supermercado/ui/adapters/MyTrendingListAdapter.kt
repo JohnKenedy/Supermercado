@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.canytech.supermercado.R
 import com.canytech.supermercado.models.ProductTrending
-import com.canytech.supermercado.ui.activities.ProductDetailActivity
+import com.canytech.supermercado.ui.activities.ProductDetailsActivity
+import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_list_layout.view.*
 
@@ -34,7 +35,8 @@ open class MyTrendingListAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, ProductDetailActivity::class.java)
+            val intent = Intent(context, ProductDetailsActivity::class.java)
+            intent.putExtra(Constants.EXTRA_PRODUCT_ID, model.product_id)
             context.startActivity(intent)
         }
 
