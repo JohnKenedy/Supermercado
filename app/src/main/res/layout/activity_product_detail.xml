@@ -147,7 +147,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_medium"
             android:maxLines="1"
-            android:text="@string/in_stock"
+            android:text="@string/stock"
             android:textColor="@color/green"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -155,7 +155,7 @@
             app:layout_constraintTop_toBottomOf="@id/price_coin" />
 
         <TextView
-            android:id="@+id/item_in_out_stock_quantity"
+            android:id="@+id/tv_product_details_stock_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -173,7 +173,7 @@
             android:id="@+id/ll_unit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/unit_bg"
             android:orientation="horizontal"

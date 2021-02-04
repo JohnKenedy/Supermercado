@@ -44,7 +44,6 @@ class SettingsActivity : BaseActivity(), View.OnClickListener {
         GlideLoader(this@SettingsActivity).loadUserPicture(user.image, profile_image)
         text_view_settings_name.text = user.name
         text_view_settings_gender.text = user.gender
-        text_view_settings_address.text = user.address
         text_view_settings_email.text = user.email
         text_view_settings_number.text = "${user.mobile}"
     }

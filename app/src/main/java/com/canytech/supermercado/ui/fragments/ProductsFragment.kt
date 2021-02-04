@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.supermercado.models.ProductCategories
 import com.canytech.supermercado.models.ProductFeature
 import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.ui.adapters.MyCategoriesListAdapter
 import com.canytech.supermercado.ui.adapters.MyFeatureListAdapter
 import com.canytech.supermercado.ui.adapters.MyTrendingListAdapter
 import kotlinx.android.synthetic.main.fragment_products.*
@@ -30,12 +33,14 @@ class ProductsFragment : BaseFragment() {
     private fun getProductsListFromFireStore() {
         showProgressDialog(resources.getString(R.string.please_wait))
         FireStoreClass().getTrendingProductsList(this)
-
     }
 
     private fun getFeatureProductsListFromFireStore() {
         FireStoreClass().getFeatureProductsList(this)
+    }
 
+    private fun getCategoriesListFromFireStore() {
+        FireStoreClass().getCategoriesList(this)
     }
 
     fun successFeatureProductsListFromFireStore(productsFeatureList: ArrayList<ProductFeature>) {
@@ -48,9 +53,20 @@ class ProductsFragment : BaseFragment() {
         rv_feature.adapter = adapterFeatureProducts
     }
 
+    fun successCategoriesListFromFireStore(categoriesList: ArrayList<ProductCategories>) {
+        hideProgressDialog()
+
+        rv_categories.layoutManager =
+            GridLayoutManager(context, 3)
+        rv_categories.setHasFixedSize(true)
+        val adapterCategories = MyCategoriesListAdapter(requireActivity(), categoriesList)
+        rv_categories.adapter = adapterCategories
+    }
+
     override fun onResume() {
         super.onResume()
         getProductsListFromFireStore()
+        getCategoriesListFromFireStore()
         getFeatureProductsListFromFireStore()
     }
 

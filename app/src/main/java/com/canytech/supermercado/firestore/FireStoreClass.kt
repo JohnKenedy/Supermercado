@@ -6,10 +6,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
-import com.canytech.supermercado.models.CartItem
-import com.canytech.supermercado.models.ProductFeature
-import com.canytech.supermercado.models.ProductTrending
-import com.canytech.supermercado.models.User
+import com.canytech.supermercado.models.*
 import com.canytech.supermercado.ui.activities.*
 import com.canytech.supermercado.ui.fragments.ProductsFragment
 import com.canytech.supermercado.utils.Constants
@@ -103,7 +100,6 @@ class FireStoreClass {
     }
 
     fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
-
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserID())
             .update(userHashMap)
@@ -229,6 +225,29 @@ class FireStoreClass {
             }
     }
 
+    fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>) {
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id)
+            .update(itemHashMap)
+            .addOnSuccessListener {
+
+                when (context) {
+                    is CartListActivity -> {
+                        context.itemUpdateSuccess()
+                    }
+                }
+
+            }.addOnFailureListener { e ->
+                when (context) {
+                    is CartListActivity -> {
+                        context.hideProgressDialog()
+                    }
+                }
+
+                Log.e(context.javaClass.simpleName,"Erroe while updating the cart item.", e)
+            }
+    }
+
     fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String) {
         mFireStore.collection(Constants.CART_ITEMS)
             .whereEqualTo(Constants.PRODUCT_ID, productId)
@@ -337,6 +356,27 @@ class FireStoreClass {
 
     }
 
+    fun removeItemFromCart(context: Context, cart_id: String) {
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id)
+            .delete()
+            .addOnSuccessListener {
+                    when (context) {
+                        is CartListActivity -> {
+                            context.itemRemovedSuccess()
+                        }
+                    }
+            }.addOnFailureListener { e ->
+                when (context) {
+                    is CartListActivity -> {
+                        context.hideProgressDialog()
+                    }
+                }
+                Log.e(context.javaClass.simpleName,
+                "Error while removing the item from the cart list.", e)
+            }
+    }
+
     fun getAllTrendingProductsList(activity: CartListActivity) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
@@ -398,6 +438,28 @@ class FireStoreClass {
                 when(fragment) {
                     is ProductsFragment -> {
                         fragment.successFeatureProductsListFromFireStore(productsFeatureList)
+                    }
+                }
+            }
+    }
+
+    fun getCategoriesList(fragment: Fragment) {
+        mFireStore.collection(Constants.CATEGORIES)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Categories List", document.documents.toString())
+                val categoriesList: ArrayList<ProductCategories> = ArrayList()
+                for (i in document.documents) {
+
+                    val categories = i.toObject(ProductCategories::class.java)
+                    categories!!.product_id = i.id
+
+                    categoriesList.add(categories)
+                }
+
+                when(fragment) {
+                    is ProductsFragment -> {
+                        fragment.successCategoriesListFromFireStore(categoriesList)
                     }
                 }
             }

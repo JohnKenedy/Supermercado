@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.CartItem
@@ -62,11 +63,20 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
         item_title_product.text = product.title
         item_old_price_product.text = product.old_price
         tv_cart_item_price.text = product.price
-        item_in_out_stock_quantity.text = product.stock_quantity
+        tv_product_details_stock_quantity.text = product.stock_quantity
         tv_cart_item_unit.text = product.unit
         til_product_description.text = product.description
 
-        FireStoreClass().checkIfItemExistInCart(this, mProductId)
+        if (product.stock_quantity.toInt() == 0) {
+            hideProgressDialog()
+
+            btn_add_to_cart.visibility = View.GONE
+            tv_product_details_stock_quantity.text = resources.getString(R.string.out_of_stock)
+            tv_product_details_stock_quantity.setTextColor(ContextCompat.getColor(
+                this@ProductDetailsActivity, R.color.red))
+        } else {
+            FireStoreClass().checkIfItemExistInCart(this, mProductId)
+        }
     }
 
     private fun setupActionBar() {

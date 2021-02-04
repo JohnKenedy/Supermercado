@@ -7,4 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class ProductCategories(
     val category_title: String = "",
     val img_category: String = "",
+    var product_id: String = ""
     ): Parcelable

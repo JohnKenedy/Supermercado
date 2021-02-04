@@ -11,6 +11,7 @@ object Constants {
     const val USERS: String = "users"
     const val PRODUCTS: String = "products"
     const val FEATURES: String = "features"
+    const val CATEGORIES: String ="category"
 
     const val MYGROCERYSTORE_PREFERENCES: String = "MyGroceryStorePrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
@@ -39,6 +40,8 @@ object Constants {
     const val CART_ITEMS: String = "cart_items"
 
     const val PRODUCT_ID: String = "product_id"
+
+    const val CART_QUANTITY: String = "cart_quantity"
 
 
     fun showImageChooser(activity: Activity) {

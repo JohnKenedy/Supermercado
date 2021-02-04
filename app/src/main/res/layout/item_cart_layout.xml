@@ -116,6 +116,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
             android:text="@string/twenty_five"
+            android:layout_marginStart="5dp"
             android:textAllCaps="false"
             android:textSize="13sp"
             android:textStyle="bold"

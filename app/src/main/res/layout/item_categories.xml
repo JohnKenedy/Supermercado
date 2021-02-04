@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/info_item"
         android:layout_width="110dp"
-        android:layout_height="65dp"
+        android:layout_height="50dp"
         android:background="@drawable/bg_poster"
         app:layout_constraintBottom_toBottomOf="@id/item_bg"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,9 +30,9 @@
         android:fontFamily="@font/montserrat_medium"
         android:gravity="center"
         android:text="@string/example_item"
-        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/info_item"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/info_item"
         app:layout_constraintTop_toTopOf="@id/info_item" />
 
     <ImageView

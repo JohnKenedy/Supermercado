@@ -2,6 +2,7 @@ package com.canytech.supermercado.ui.activities
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
@@ -15,6 +16,7 @@ class CartListActivity : BaseActivity() {
 
     private lateinit var mProductTrendingList: ArrayList<ProductTrending>
     private lateinit var mProductFeatureList: ArrayList<ProductFeature>
+    private lateinit var mCartListItems: ArrayList<CartItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,33 @@ class CartListActivity : BaseActivity() {
     fun successCartItemsList(cartList: ArrayList<CartItem>) {
         hideProgressDialog()
 
-        if (cartList.size > 0) {
+        for (productTrending in mProductTrendingList) {
+            for (cartItem in cartList) {
+                if (productTrending.product_id == cartItem.product_id) {
+                    cartItem.stock_quantity = productTrending.stock_quantity
+
+                    if (productTrending.stock_quantity.toInt() == 0) {
+                        cartItem.cart_quantity = productTrending.stock_quantity
+                    }
+                }
+            }
+        }
+
+        for (productFeature in mProductFeatureList) {
+            for (cartItem in cartList) {
+                if (productFeature.product_id == cartItem.product_id) {
+                    cartItem.stock_quantity = productFeature.stock_quantity
+
+                    if (productFeature.stock_quantity.toInt() == 0) {
+                        cartItem.cart_quantity = productFeature.stock_quantity
+                    }
+                }
+            }
+        }
+
+        mCartListItems = cartList
+
+        if (mCartListItems.size > 0) {
             rv_cart_items_list.visibility = View.VISIBLE
             ll_checkout.visibility = View.VISIBLE
             btn_checkout.visibility = View.VISIBLE
@@ -37,10 +65,14 @@ class CartListActivity : BaseActivity() {
             rv_cart_items_list.adapter = cartListAdapter
 
             var subTotal: Double = 0.0
-            for (item in cartList) {
-                val price = item.price.toDouble()
-                val quantity = item.cart_quantity.toInt()
-                subTotal += (price * quantity)
+            for (item in mCartListItems) {
+
+                val availableQuantity = item.stock_quantity.toInt()
+                if (availableQuantity > 0) {
+                    val price = item.price.toDouble()
+                    val quantity = item.cart_quantity.toInt()
+                    subTotal += (price * quantity)
+                }
             }
             tv_sub_total.text = "$$subTotal"
             tv_shipping_charge.text = "S10.0"   // TODO - change Logic shipping charge
@@ -63,12 +95,14 @@ class CartListActivity : BaseActivity() {
     }
 
     fun successTrendingProductsListFromFireStore(trendingList: ArrayList<ProductTrending>) {
+        hideProgressDialog()
         mProductTrendingList = trendingList
 
         getCartItemsList()
     }
 
     fun successFeatureProductsListFromFireStore(featureList: ArrayList<ProductFeature>) {
+        hideProgressDialog()
         mProductFeatureList = featureList
 
         getCartItemsList()
@@ -80,13 +114,17 @@ class CartListActivity : BaseActivity() {
     }
 
     private fun getProductsFeatureList() {
-        showProgressDialog(resources.getString(R.string.please_wait))
         FireStoreClass().getAllFeatureProductsList(this)
     }
 
     private fun getCartItemsList() {
-        showProgressDialog(resources.getString(R.string.please_wait))
+//      showProgressDialog(resources.getString(R.string.please_wait))
         FireStoreClass().getCartList(this@CartListActivity)
+    }
+
+    fun itemUpdateSuccess() {
+        hideProgressDialog()
+        getCartItemsList()
     }
 
     override fun onResume() {
@@ -94,6 +132,15 @@ class CartListActivity : BaseActivity() {
         //getCartItemsList()
         getProductsTrendingList()
         getProductsFeatureList()
+    }
+
+    fun itemRemovedSuccess() {
+        hideProgressDialog()
+        Toast.makeText(
+            this@CartListActivity, resources.getString(R.string.item_removed_successfully),
+            Toast.LENGTH_SHORT).show()
+
+        getCartItemsList()
     }
 
     private fun setupActionBar() {
