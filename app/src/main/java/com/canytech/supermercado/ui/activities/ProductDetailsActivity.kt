@@ -90,6 +90,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
             mProductDetails.price,
             mProductDetails.image,
             mProductDetails.stock_quantity,
+            mProductDetails.unit,
             Constants.DEFAULT_CART_QUANTITY
         )
 

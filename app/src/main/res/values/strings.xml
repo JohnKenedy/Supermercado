@@ -113,5 +113,6 @@
     <string name="quantity">Quantity: </string>
     <string name="twenty_five">25</string>
     <string name="unit">Unit: </string>
+    <string name="ten_doll">$10.0</string>
 
 </resources>

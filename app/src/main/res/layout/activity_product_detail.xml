@@ -60,10 +60,11 @@
 
             <ImageView
                 android:id="@+id/iv_product_detail_image"
-                android:layout_width="match_parent"
-                android:layout_height="210dp"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:padding="35dp"
+                android:layout_gravity="center"
                 android:backgroundTint="@color/no_color"
-                android:padding="10dp"
                 android:src="@drawable/bananana" />
 
         </androidx.cardview.widget.CardView>
@@ -251,12 +252,12 @@
             android:background="@drawable/btn_bg"
             android:fontFamily="@font/montserrat_medium"
             android:paddingTop="10dp"
-            android:visibility="visible"
             android:paddingBottom="10dp"
             android:text="@string/btn_add_to_cart"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view2" />
@@ -267,8 +268,8 @@
             android:layout_height="0dp"
             android:layout_marginEnd="150dp"
             android:elevation="5dp"
-            android:visibility="visible"
             android:src="@drawable/ic_baseline_shopping_cart_24"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@id/btn_add_to_cart"
             app:layout_constraintEnd_toEndOf="@id/btn_add_to_cart"
             app:layout_constraintStart_toStartOf="@id/btn_add_to_cart"
@@ -283,11 +284,11 @@
             android:fontFamily="@font/montserrat_medium"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:visibility="gone"
             android:text="@string/btn_go_to_cart"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view2" />

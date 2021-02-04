@@ -337,6 +337,50 @@ class FireStoreClass {
 
     }
 
+    fun getAllTrendingProductsList(activity: CartListActivity) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .get()
+            .addOnSuccessListener { document ->
+
+                Log.e("Trending List", document.documents.toString())
+                val trendingList: ArrayList<ProductTrending> = ArrayList()
+                for (i in document.documents) {
+
+                    val productTrending = i.toObject(ProductTrending::class.java)
+                    productTrending!!.product_id = i.id
+                    trendingList.add(productTrending)
+                }
+
+                activity.successTrendingProductsListFromFireStore(trendingList)
+
+            }.addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e("Get Trending List", "Erroe while getting all product list.", e)
+            }
+    }
+
+    fun getAllFeatureProductsList(activity: CartListActivity) {
+        mFireStore.collection(Constants.FEATURES)
+            .get()
+            .addOnSuccessListener { document ->
+
+                Log.e("Trending List", document.documents.toString())
+                val featureList: ArrayList<ProductFeature> = ArrayList()
+                for (i in document.documents) {
+
+                    val productFeature = i.toObject(ProductFeature::class.java)
+                    productFeature!!.product_id = i.id
+                    featureList.add(productFeature)
+                }
+
+                activity.successFeatureProductsListFromFireStore(featureList)
+
+            }.addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e("Get Trending List", "Erroe while getting all product list.", e)
+            }
+    }
+
     fun getFeatureProductsList(fragment: Fragment) {
         mFireStore.collection(Constants.FEATURES)
             .get()

@@ -24,8 +24,9 @@
 
             <ImageView
                 android:id="@+id/iv_cart_item_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="138dp"
+                android:layout_gravity="center"
+                android:layout_height="133dp"
                 android:padding="15dp"
                 android:src="@drawable/bananana" />
 
