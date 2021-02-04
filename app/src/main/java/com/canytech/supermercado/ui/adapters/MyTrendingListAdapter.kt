@@ -30,8 +30,8 @@ open class MyTrendingListAdapter(
             GlideLoader(context).loadProductPicture(model.image, holder.itemView.item_img_product)
             holder.itemView.item_title_product.text = model.title
             holder.itemView.item_old_price_product.text = model.old_price
-            holder.itemView.item_price_product.text = model.price
-            holder.itemView.textView_item_unit.text = model.unit
+            holder.itemView.tv_cart_item_price.text = model.price
+            holder.itemView.tv_cart_item_unit.text = model.unit
         }
 
         holder.itemView.setOnClickListener {

@@ -199,6 +199,36 @@ class FireStoreClass {
             }
     }
 
+    fun getCartList(activity: Activity) {
+        mFireStore.collection(Constants.CART_ITEMS)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val list: ArrayList<CartItem> = ArrayList()
+
+                for (i in document.documents) {
+                 val cartItem = i.toObject(CartItem::class.java)!!
+                 cartItem.id = i.id
+                 list.add(cartItem)
+                }
+
+                when(activity) {
+                    is CartListActivity -> {
+                        activity.successCartItemsList(list)
+                    }
+                }
+            }.addOnFailureListener { e->
+                when(activity) {
+                    is CartListActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+
+                Log.e(activity.javaClass.simpleName,
+                    "Error while getting the card list items.", e)
+            }
+    }
+
     fun checkIfItemExistInCart(activity: ProductDetailsActivity, productId: String) {
         mFireStore.collection(Constants.CART_ITEMS)
             .whereEqualTo(Constants.PRODUCT_ID, productId)

@@ -61,9 +61,9 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
 
         item_title_product.text = product.title
         item_old_price_product.text = product.old_price
-        item_price_product.text = product.price
+        tv_cart_item_price.text = product.price
         item_in_out_stock_quantity.text = product.stock_quantity
-        textView_item_unit.text = product.unit
+        tv_cart_item_unit.text = product.unit
         til_product_description.text = product.description
 
         FireStoreClass().checkIfItemExistInCart(this, mProductId)
