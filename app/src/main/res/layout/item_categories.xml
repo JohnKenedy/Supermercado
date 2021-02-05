@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
+    android:padding="5dp"
+    android:layout_gravity="center"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/item_bg"
-        android:layout_width="110dp"
-        android:layout_height="140dp"
+        android:layout_width="105dp"
+        android:layout_height="130dp"
         android:background="@drawable/bg_poster"
         android:backgroundTint="@color/light_gray"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,8 +17,8 @@
 
     <ImageView
         android:id="@+id/info_item"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
         android:background="@drawable/bg_poster"
         app:layout_constraintBottom_toBottomOf="@id/item_bg"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,7 +41,7 @@
         android:id="@+id/img_category"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="5dp"
+        android:padding="8dp"
         android:src="@drawable/bakery"
         app:layout_constraintBottom_toTopOf="@id/info_item"
         app:layout_constraintEnd_toEndOf="@id/item_bg"

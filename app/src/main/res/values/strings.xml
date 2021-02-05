@@ -20,7 +20,7 @@
     <string name="sing_in_google">Sign in with Google</string>
     <string name="sing_up_google">Sign Up with Google</string>
     <string name="no_have_account">Don\'t have an account? <font color='#FECE01'><b>Sign Up</b></font></string>
-    <string name="forgot_password">forgot password?</string>
+    <string name="forgot_password">Forgot password?</string>
     <string name="sing_up">Sign Up</string>
     <string name="create_account">Create Account</string>
     <string name="name">Full name</string>
@@ -57,7 +57,7 @@
     <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
-    <string name="add_addres">Add address</string>
+    <string name="add_address">Add address</string>
     <string name="logout">Logout</string>
     <string name="edit">Edit</string>
     <string name="addresses">Addresses</string>
@@ -116,6 +116,20 @@
     <string name="ten_doll">$10.0</string>
     <string name="lbl_out_of_stock">Out of stock</string>
     <string name="item_removed_successfully">Item removed successfully</string>
-    <string name="msg_for_avaliable_stock">Available stock is %1$s!. You can not add more than stock quantity.</string>
+    <string name="msg_for_available_stock">Available stock is %1$s!. You can not add more than stock quantity.</string>
+
+    <string name="title_address_list">Address list</string>
+    <string name="no_address_found">No address found!</string>
+    <string name="lbl_add_address">Add address</string>
+
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_address">Address</string>
+    <string name="hint_zip_code">Zipcode</string>
+    <string name="hint_additional_note">Additional note</string>
+    <string name="hint_other_details">Other details</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_office">Office</string>
+    <string name="lbl_other">Other</string>
 
 </resources>

@@ -187,7 +187,7 @@
                 app:layout_constraintTop_toTopOf="@id/txt_address" />
 
             <LinearLayout
-                android:id="@+id/LinearLayout_settings_address"
+                android:id="@+id/ll_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -234,7 +234,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/LinearLayout_settings_address" />
+                app:layout_constraintTop_toBottomOf="@id/ll_address" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

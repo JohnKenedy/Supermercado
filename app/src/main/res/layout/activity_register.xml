@@ -18,7 +18,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="150dp"
                 android:background="@drawable/shape_top"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:fontFamily="@font/montserrat_medium"
                     android:text="@string/sing_up"
                     android:textColor="@color/white"
@@ -48,7 +49,7 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
+                    android:layout_height="110dp"
                     android:layout_marginEnd="25dp"
                     android:layout_weight="1"
                     android:padding="15dp"
@@ -191,8 +192,7 @@
                     android:paddingBottom="14dp"
                     android:text="@string/sing_up"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textColor="@color/white" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -214,8 +214,7 @@
                         android:background="@color/white"
                         android:fontFamily="@font/montserrat_light"
                         android:padding="15dp"
-                        android:text="@string/or"
-                        android:textSize="16sp" />
+                        android:text="@string/or" />
 
                 </FrameLayout>
 
@@ -226,26 +225,37 @@
                     android:layout_marginEnd="15dp">
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_register_sing_google"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/btn_google_bg"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:paddingTop="14dp"
-                        android:paddingBottom="14dp"
-                        android:text="@string/sing_up_google"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:layout_width="155dp"
-                        android:layout_height="56dp"
-                        android:elevation="5dp"
-                        android:padding="16dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/g" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_register_sing_google"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn_google_bg"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:paddingTop="14dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:paddingBottom="14dp"
+                            android:text="@string/sing_in_google"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:elevation="5dp"
+                            android:layout_marginEnd="180dp"
+                            android:padding="15dp"
+                            app:layout_constraintStart_toStartOf="@id/btn_register_sing_google"
+                            app:layout_constraintEnd_toEndOf="@id/btn_register_sing_google"
+                            app:layout_constraintTop_toTopOf="@id/btn_register_sing_google"
+                            app:layout_constraintBottom_toBottomOf="@id/btn_register_sing_google"
+                            android:src="@drawable/g"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </FrameLayout>
 

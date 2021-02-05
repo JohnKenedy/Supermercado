@@ -111,7 +111,7 @@ open class CartItemsListAdapter(
                 } else {
                     if (context is CartListActivity) {
                         context.showErrorSnackBar(context.resources.getString(
-                            R.string.msg_for_avaliable_stock, model.stock_quantity), true)
+                            R.string.msg_for_available_stock, model.stock_quantity), true)
                     }
                 }
             }
