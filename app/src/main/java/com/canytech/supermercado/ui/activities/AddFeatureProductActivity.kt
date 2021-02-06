@@ -37,21 +37,7 @@ class AddFeatureProductActivity : BaseActivity(), View.OnClickListener {
         imageView_add_update_feature_product.setOnClickListener(this)
         btn_add_product_feature_submit.setOnClickListener(this)
 
-        val spinnerCategory = listOf<String>(
-            "Personal care",
-            "Chocolate, biscuits & Snacks",
-            "Fruits &amp; vegetables",
-            "Breakfast, dairy &amp; cereals",
-            "Baby care",
-            "Grains, wheat & rice",
-            "Beverages"
-        )
-        val arraySpinnerAdapter = ArrayAdapter<String>(
-            this,
-            R.layout.support_simple_spinner_dropdown_item,
-            spinnerCategory
-        )
-        spinner_category.adapter = arraySpinnerAdapter
+
     }
 
     private fun setupActionBar() {
