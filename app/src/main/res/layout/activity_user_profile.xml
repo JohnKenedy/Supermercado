@@ -151,31 +151,6 @@
                 app:layout_constraintStart_toEndOf="@+id/txt_number"
                 app:layout_constraintTop_toTopOf="@id/txt_number" />
 
-            <TextView
-                android:id="@+id/txt_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/montserrat_medium"
-                android:text="@string/address"
-                android:textColor="@color/black2"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_number" />
-
-            <TextView
-                android:id="@+id/text_view_user_profile_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/montserrat_light"
-                android:text="@string/address"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/txt_address"
-                app:layout_constraintTop_toTopOf="@id/txt_address" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -191,7 +166,7 @@
                 app:boxCornerRadiusTopStart="13dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_address">
+                app:layout_constraintTop_toBottomOf="@id/txt_number">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_register_number"
@@ -203,34 +178,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInput2"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:hint="@string/address"
-                app:boxCornerRadiusBottomEnd="13dp"
-                app:boxCornerRadiusBottomStart="13dp"
-                app:boxCornerRadiusTopEnd="13dp"
-                app:boxCornerRadiusTopStart="13dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInputLayout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_register_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
-                    android:drawablePadding="5dp"
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
             <RadioGroup
                 android:id="@+id/radio_group_user_profile_gender"
                 android:layout_width="match_parent"
@@ -241,7 +188,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput2">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <RadioButton
                     android:id="@+id/radio_btn_user_profile_male"

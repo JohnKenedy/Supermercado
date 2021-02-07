@@ -45,7 +45,6 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
             text_view_user_profile_name.text = mUserDetails.name
             text_view_user_profile_email.text = mUserDetails.email
             text_view_user_profile_number.text = mUserDetails.mobile.toString()
-            text_view_user_profile_address.text = mUserDetails.address
         } else {
             setupActionBar()
 
@@ -55,7 +54,6 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
             text_view_user_profile_name.text = mUserDetails.name
             text_view_user_profile_email.text = mUserDetails.email
-            text_view_user_profile_address.text = mUserDetails.address
 
 
             if (mUserDetails.mobile != 0L) {
@@ -134,9 +132,6 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
         val mobileNumber =
             edit_text_register_number.text.toString().trim { it <= ' ' }
 
-        val userAddress =
-            edit_text_register_address.text.toString().trim { it <= ' ' }
-
         val gender = if (radio_btn_user_profile_male.isChecked) {
             Constants.MALE
         } else {
@@ -149,10 +144,6 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
         //create key and value to Firebase, EX: key: gender value: male,
         // key: userAddress value: Address typed
-        if (mobileNumber.isNotEmpty() || userAddress.isNotEmpty()) {
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-            userHashMap[Constants.ADDRESS] = userAddress
-        }
 
         if (gender.isNotEmpty() && gender != mUserDetails.gender) {
             userHashMap[Constants.GENDER] = gender
@@ -216,9 +207,7 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     private fun validateUserProfileDetails(): Boolean {
         return when {
-            TextUtils.isEmpty(edit_text_register_number.text.toString().trim { it <= ' ' })
-                    || TextUtils.isEmpty(
-                edit_text_register_address.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(edit_text_register_number.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.error_msg_complete_all_fields), true)
                 false
             }

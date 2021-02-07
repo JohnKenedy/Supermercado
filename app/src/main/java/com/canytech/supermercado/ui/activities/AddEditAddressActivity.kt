@@ -1,21 +1,66 @@
 package com.canytech.supermercado.ui.activities
 
 import android.os.Bundle
-import android.provider.SyncStateContract
 import android.text.TextUtils
+import android.view.View
+import android.widget.Toast
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.Address
 import com.canytech.supermercado.utils.Constants
 import kotlinx.android.synthetic.main.activity_add_edit_address.*
-import kotlinx.android.synthetic.main.activity_address_list.*
 
 class AddEditAddressActivity : BaseActivity() {
+
+    private var mAddressDetails: Address? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_address)
         setupActionBar()
+
+        if (intent.hasExtra(Constants.EXTRA_ADDRESS_DETAILS)) {
+            mAddressDetails = intent.getParcelableExtra(Constants.EXTRA_ADDRESS_DETAILS)
+        }
+
+        if (mAddressDetails != null) {
+            if (mAddressDetails!!.id.isNotEmpty()) {
+                textView_add_edit_address_title.text =
+                    resources.getString(R.string.title_edit_address)
+                btn_submit_address.text = resources.getString(R.string.btn_lbl_update)
+
+                edit_text_full_name.setText(mAddressDetails?.name)
+                edit_text_phone_number.setText(mAddressDetails?.mobileNumber)
+                edit_text_address.setText(mAddressDetails?.address)
+                edit_text_zip_code.setText(mAddressDetails?.zipCode)
+                edit_text_additional_notes.setText(mAddressDetails?.additionalNote)
+
+                when (mAddressDetails?.type) {
+                    Constants.HOME -> {
+                        radio_btn_home.isChecked = true
+                    }
+                    Constants.OFFICE -> {
+                        radio_btn_office.isChecked = true
+                    }
+                    else -> {
+                        radio_btn_other.isChecked = true
+                        til_other_details.visibility = View.VISIBLE
+                        edit_text_other_details.setText(mAddressDetails?.otherDetails)
+                    }
+                }
+            }
+        }
+
+        btn_submit_address.setOnClickListener { saveAddressToFirestore() }
+        rg_type.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId == R.id.radio_btn_other) {
+                til_other_details.visibility = View.VISIBLE
+            } else {
+                til_other_details.visibility = View.GONE
+            }
+        }
     }
+
 
     private fun setupActionBar() {
 
@@ -65,10 +110,32 @@ class AddEditAddressActivity : BaseActivity() {
                 otherDetails
             )
 
+            if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
+                FireStoreClass().updateAddress(this, addressModel, mAddressDetails!!.id)
+            } else {
+                FireStoreClass().addAddress(this, addressModel)
+            }
         }
     }
 
-   private fun validateData(): Boolean {
+    fun addUpdateAddressSuccess() {
+        hideProgressDialog()
+        val notifySuccessMessage: String = if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
+            resources.getString(R.string.your_address_update_successfully)
+        } else {
+            resources.getString(R.string.error_your_address_added_successfully)
+        }
+
+        Toast.makeText(
+            this, notifySuccessMessage,
+            Toast.LENGTH_SHORT
+        ).show()
+
+        finish()
+
+    }
+
+    private fun validateData(): Boolean {
         return when {
 
             TextUtils.isEmpty(edit_text_full_name.text.toString().trim { it <= ' ' }) -> {

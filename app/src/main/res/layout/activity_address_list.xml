@@ -45,7 +45,7 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/tv_no_cart_item_found"
+        android:id="@+id/tv_no_address_found"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"

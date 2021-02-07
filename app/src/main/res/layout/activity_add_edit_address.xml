@@ -18,7 +18,7 @@
         app:titleTextColor="@color/no_color" />
 
     <TextView
-        android:id="@+id/textView_add_address_title"
+        android:id="@+id/textView_add_edit_address_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="4dp"
