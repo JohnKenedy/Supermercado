@@ -7,16 +7,19 @@ import android.provider.SyncStateContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.canytech.supermercado.R
 import com.canytech.supermercado.models.Address
 import com.canytech.supermercado.ui.activities.AddEditAddressActivity
+import com.canytech.supermercado.ui.activities.CheckoutActivity
 import com.canytech.supermercado.utils.Constants
 import kotlinx.android.synthetic.main.item_address_layout.view.*
 
 open class AddressListAdapter(
     private val context: Context,
-    private val list: ArrayList<Address>
+    private val list: ArrayList<Address>,
+    private val selectAddress: Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -31,7 +34,7 @@ open class AddressListAdapter(
     fun notifyEditItem(activity: Activity, position: Int) {
         val intent = Intent(context, AddEditAddressActivity::class.java)
         intent.putExtra(Constants.EXTRA_ADDRESS_DETAILS, list[position])
-        activity.startActivity(intent)
+        activity.startActivityForResult(intent, Constants.ADD_ADDRESS_REQUEST_CODE)
         notifyItemChanged(position)
     }
 
@@ -42,6 +45,14 @@ open class AddressListAdapter(
             holder.itemView.tv_address_type.text = model.type
             holder.itemView.tv_address_details.text = "${model.address}, ZIP: ${model.zipCode}"
             holder.itemView.tv_address_phone_number.text = model.mobileNumber
+
+            if (selectAddress) {
+                holder.itemView.setOnClickListener {
+
+                    val intent = Intent(context, CheckoutActivity::class.java)
+                    context.startActivity(intent)
+                }
+            }
         }
     }
 

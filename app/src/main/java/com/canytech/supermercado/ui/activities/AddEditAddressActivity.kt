@@ -17,16 +17,17 @@ class AddEditAddressActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_address)
-        setupActionBar()
 
         if (intent.hasExtra(Constants.EXTRA_ADDRESS_DETAILS)) {
             mAddressDetails = intent.getParcelableExtra(Constants.EXTRA_ADDRESS_DETAILS)
         }
 
+        setupActionBar()
+
+
         if (mAddressDetails != null) {
             if (mAddressDetails!!.id.isNotEmpty()) {
-                textView_add_edit_address_title.text =
-                    resources.getString(R.string.title_edit_address)
+                textView_add_edit_address_title.text = resources.getString(R.string.title_edit_address)
                 btn_submit_address.text = resources.getString(R.string.btn_lbl_update)
 
                 edit_text_full_name.setText(mAddressDetails?.name)
@@ -51,13 +52,15 @@ class AddEditAddressActivity : BaseActivity() {
             }
         }
 
-        btn_submit_address.setOnClickListener { saveAddressToFirestore() }
         rg_type.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId == R.id.radio_btn_other) {
                 til_other_details.visibility = View.VISIBLE
             } else {
                 til_other_details.visibility = View.GONE
             }
+        }
+        btn_submit_address.setOnClickListener {
+            saveAddressToFirestore()
         }
     }
 
@@ -120,17 +123,19 @@ class AddEditAddressActivity : BaseActivity() {
 
     fun addUpdateAddressSuccess() {
         hideProgressDialog()
-        val notifySuccessMessage: String = if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
-            resources.getString(R.string.your_address_update_successfully)
-        } else {
-            resources.getString(R.string.error_your_address_added_successfully)
-        }
+        val notifySuccessMessage: String =
+            if (mAddressDetails != null && mAddressDetails!!.id.isNotEmpty()) {
+                resources.getString(R.string.your_address_update_successfully)
+            } else {
+                resources.getString(R.string.error_your_address_added_successfully)
+            }
 
         Toast.makeText(
-            this, notifySuccessMessage,
+            this@AddEditAddressActivity, notifySuccessMessage,
             Toast.LENGTH_SHORT
         ).show()
 
+        setResult(RESULT_OK)
         finish()
 
     }

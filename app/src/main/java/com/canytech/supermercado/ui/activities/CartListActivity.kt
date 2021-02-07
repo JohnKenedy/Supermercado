@@ -1,5 +1,6 @@
 package com.canytech.supermercado.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.canytech.supermercado.models.CartItem
 import com.canytech.supermercado.models.ProductFeature
 import com.canytech.supermercado.models.ProductTrending
 import com.canytech.supermercado.ui.adapters.CartItemsListAdapter
+import com.canytech.supermercado.utils.Constants
 import kotlinx.android.synthetic.main.activity_cart_list.*
 
 class CartListActivity : BaseActivity() {
@@ -22,6 +24,12 @@ class CartListActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_list)
         setupActionBar()
+
+        btn_checkout.setOnClickListener {
+            val intent = Intent(this@CartListActivity, AddressListActivity::class.java)
+            intent.putExtra(Constants.EXTRA_SELECT_ADDRESS, true)
+            startActivity(intent)
+        }
     }
 
     fun successCartItemsList(cartList: ArrayList<CartItem>) {

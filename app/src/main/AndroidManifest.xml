@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Supermercado">
-        <activity android:name=".ui.activities.AddEditAddressActivity"
+        <activity android:name=".ui.activities.CheckoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sup_NoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".ui.activities.AddEditAddressActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sup_NoActionBar"
             tools:ignore="LockedOrientationActivity" />
