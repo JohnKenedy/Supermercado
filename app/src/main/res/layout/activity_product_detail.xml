@@ -60,12 +60,10 @@
 
             <ImageView
                 android:id="@+id/iv_product_detail_image"
-                android:layout_width="250dp"
-                android:layout_height="200dp"
-                android:padding="35dp"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/no_color"
-                android:src="@drawable/bananana" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="25dp"
+                tools:src="@drawable/bananana" />
 
         </androidx.cardview.widget.CardView>
 
@@ -76,7 +74,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_medium"
             android:maxLines="1"
-            android:text="@string/example_item"
+            tools:text="@string/example_item"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/poster"
@@ -162,7 +160,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_medium"
             android:maxLines="1"
-            android:text="@string/number_ex"
+            tools:text="@string/number_ex"
             android:textColor="@color/green"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -186,7 +184,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/unit_um_kg"
+                tools:text="@string/unit_um_kg"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
 
@@ -196,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/gramas"
+                tools:text="@string/gramas"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -231,7 +229,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/montserrat_light"
             android:maxLines="7"
-            android:text="@string/lbl_product_description_ex"
+            tools:text="@string/lbl_product_description_ex"
             app:layout_constraintEnd_toEndOf="@id/poster"
             app:layout_constraintStart_toStartOf="@id/poster"
             app:layout_constraintTop_toBottomOf="@id/item_title_description" />

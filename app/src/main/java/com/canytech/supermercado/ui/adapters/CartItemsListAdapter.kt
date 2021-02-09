@@ -20,7 +20,8 @@ import kotlinx.android.synthetic.main.item_list_layout.view.tv_cart_item_unit
 
 open class CartItemsListAdapter(
     private val context: Context,
-    private var list: ArrayList<CartItem>
+    private var list: ArrayList<CartItem>,
+    private val updateCartItems: Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,6 +56,12 @@ open class CartItemsListAdapter(
                 holder.itemView.ib_remove_cart_item.visibility = View.GONE
                 holder.itemView.ib_add_cart_item.visibility = View.GONE
 
+                if (updateCartItems) {
+                    holder.itemView.iv_cart_item_delete_product.visibility = View.VISIBLE
+                } else {
+                    holder.itemView.iv_cart_item_delete_product.visibility = View.GONE
+                }
+
                 holder.itemView.tv_cart_quantity.text =
                     context.resources.getString(R.string.lbl_out_of_stock)
 
@@ -62,8 +69,15 @@ open class CartItemsListAdapter(
                     ContextCompat.getColor(context, R.color.red)
                 )
             } else {
-                holder.itemView.ib_remove_cart_item.visibility = View.VISIBLE
-                holder.itemView.ib_add_cart_item.visibility = View.VISIBLE
+                if (updateCartItems) {
+                    holder.itemView.ib_remove_cart_item.visibility = View.VISIBLE
+                    holder.itemView.ib_add_cart_item.visibility = View.VISIBLE
+                    holder.itemView.iv_cart_item_delete_product.visibility = View.VISIBLE
+                } else {
+                    holder.itemView.ib_remove_cart_item.visibility = View.GONE
+                    holder.itemView.ib_add_cart_item.visibility = View.GONE
+                    holder.itemView.iv_cart_item_delete_product.visibility = View.GONE
+                }
 
                 holder.itemView.tv_cart_quantity.setTextColor(
                     ContextCompat.getColor(context, R.color.text_color)
@@ -110,8 +124,11 @@ open class CartItemsListAdapter(
 
                 } else {
                     if (context is CartListActivity) {
-                        context.showErrorSnackBar(context.resources.getString(
-                            R.string.msg_for_available_stock, model.stock_quantity), true)
+                        context.showErrorSnackBar(
+                            context.resources.getString(
+                                R.string.msg_for_available_stock, model.stock_quantity
+                            ), true
+                        )
                     }
                 }
             }

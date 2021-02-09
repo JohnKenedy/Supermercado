@@ -2,8 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="15dp"
     android:padding="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="15dp"
+
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,11 +28,11 @@
 
             <ImageView
                 android:id="@+id/iv_cart_item_img"
-                android:layout_width="138dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="133dp"
-                android:padding="15dp"
-                android:src="@drawable/bananana" />
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                tools:src="@drawable/bananana" />
 
         </androidx.cardview.widget.CardView>
 
@@ -39,7 +43,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/example_item"
+            tools:text="@string/example_item"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/info_item_product"
@@ -75,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/price"
+            tools:text="@string/price"
             android:textColor="@color/green"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -88,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/gramas"
+            tools:text="@string/gramas"
             android:textAllCaps="false"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -115,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/twenty_five"
+            tools:text="@string/twenty_five"
             android:layout_marginStart="5dp"
             android:textAllCaps="false"
             android:textSize="13sp"
@@ -157,7 +161,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/twenty_five"
+                tools:text="@string/twenty_five"
                 android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView

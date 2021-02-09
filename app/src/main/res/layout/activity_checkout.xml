@@ -71,7 +71,7 @@
                 android:id="@+id/rv_checkout_cart_list_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_checkout_product_items" />
@@ -94,7 +94,7 @@
                 android:id="@+id/checkout_card_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -172,14 +172,14 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:maxLines="1"
                         android:textSize="12sp"
-                        app:layout_constraintBottom_toTopOf="@id/tv_checkout_additional_note"
+                        app:layout_constraintBottom_toTopOf="@id/tv_checkout_mobile_number"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/img_address"
                         app:layout_constraintTop_toBottomOf="@id/tv_checkout_full_name"
                         tools:text="Rua Prados, 359" />
 
                     <TextView
-                        android:id="@+id/tv_checkout_additional_note"
+                        android:id="@+id/tv_checkout_mobile_number"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -203,11 +203,11 @@
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/img_address"
-                        app:layout_constraintTop_toBottomOf="@id/tv_checkout_additional_note"
+                        app:layout_constraintTop_toBottomOf="@id/tv_checkout_mobile_number"
                         tools:text="other details" />
 
                     <TextView
-                        android:id="@+id/tv_checkout_mobile_number"
+                        android:id="@+id/tv_checkout_additional_note"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -242,7 +242,7 @@
                 android:id="@+id/cv_checkout_checkout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -253,9 +253,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
+                    android:padding="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
