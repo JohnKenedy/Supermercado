@@ -62,7 +62,7 @@
                 app:boxCornerRadiusTopStart="13dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_full_name"
+                    android:id="@+id/et_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_person_24"
@@ -84,7 +84,7 @@
                 app:boxCornerRadiusTopStart="13dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_phone_number"
+                    android:id="@+id/et_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_phone_24"
@@ -106,7 +106,7 @@
                 app:boxCornerRadiusTopStart="13dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_address"
+                    android:id="@+id/et_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_add_location_alt_24"
@@ -129,7 +129,7 @@
                 app:boxCornerRadiusTopStart="13dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_zip_code"
+                    android:id="@+id/et_zip_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_note_24"
@@ -151,7 +151,7 @@
                 app:boxCornerRadiusTopStart="13dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_additional_notes"
+                    android:id="@+id/et_additional_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_note_add_24"
@@ -166,7 +166,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radio_btn_home"
+                    android:id="@+id/rb_home"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
@@ -181,7 +181,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radio_btn_office"
+                    android:id="@+id/rb_office"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
@@ -196,7 +196,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radio_btn_other"
+                    android:id="@+id/rb_other"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
@@ -229,7 +229,7 @@
                 tools:visibility="visible">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_other_details"
+                    android:id="@+id/et_other_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_details_24"

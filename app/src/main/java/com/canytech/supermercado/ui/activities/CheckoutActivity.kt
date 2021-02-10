@@ -11,13 +11,11 @@ import com.canytech.supermercado.ui.adapters.CartItemsListAdapter
 import com.canytech.supermercado.utils.Constants
 import kotlinx.android.synthetic.main.activity_cart_list.*
 import kotlinx.android.synthetic.main.activity_checkout.*
-import java.math.BigDecimal
 
 class CheckoutActivity : BaseActivity() {
 
     private var mAddressDetails: Address? = null
-    private lateinit var mTrendingProductList: ArrayList<ProductTrending>
-    private lateinit var mFeatureProductList: ArrayList<ProductFeature>
+    private lateinit var mTrendingProductList: ArrayList<Product>
     private lateinit var mCartItemsList: ArrayList<CartItem>
     private var mSubTotal: Double = 0.0
     private var mTotalAmount: Double = 0.0
@@ -45,14 +43,16 @@ class CheckoutActivity : BaseActivity() {
         getProductList()
 
         btn_place_order.setOnClickListener {
-            placeAnOrder()
+            placeTrendingAnOrder()
         }
     }
 
-    fun orderPlacedSuccess() {
+    fun allDetailsUpdateSuccessfully() {
         hideProgressDialog()
-        Toast.makeText(this@CheckoutActivity, "Your order was placed successfully.",
-        Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            this@CheckoutActivity, "Your order was placed successfully.",
+            Toast.LENGTH_SHORT
+        ).show()
 
         val intent = Intent(this@CheckoutActivity, DashboardActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -60,13 +60,13 @@ class CheckoutActivity : BaseActivity() {
         finish()
     }
 
-    fun successTrendingProductsListFromFireStore(productsList: ArrayList<ProductTrending>) {
-        mTrendingProductList = productsList
-        getCartItemsList()
+    fun orderTrendingPlacedSuccess() {
+        FireStoreClass().updateTrendingAllDetails(this, mCartItemsList)
     }
 
-    fun successFeatureProductsListFromFireStore(productsList: ArrayList<ProductFeature>) {
-        mFeatureProductList = productsList
+
+    fun successTrendingProductsListFromFireStore(productsList: ArrayList<Product>) {
+        mTrendingProductList = productsList
         getCartItemsList()
     }
 
@@ -74,7 +74,7 @@ class CheckoutActivity : BaseActivity() {
         FireStoreClass().getCartList(this@CheckoutActivity)
     }
 
-    private fun placeAnOrder() {
+    private fun placeTrendingAnOrder() {
         showProgressDialog(resources.getString(R.string.please_wait))
         if (mAddressDetails != null) {
             val order = Order(
@@ -88,26 +88,21 @@ class CheckoutActivity : BaseActivity() {
                 mTotalAmount.toString(),
             )
 
-            FireStoreClass().placeOrder(this, order)
+            FireStoreClass().placeTrendingOrder(this, order)
         }
     }
 
+
     fun successCartItemsList(cartList: ArrayList<CartItem>) {
         hideProgressDialog()
-        for (product in  mTrendingProductList) {
+        for (product in mTrendingProductList) {
             for (cartItem in cartList) {
                 if (product.product_id == cartItem.product_id) {
                     cartItem.stock_quantity = product.stock_quantity
                 }
             }
         }
-        for (product in  mFeatureProductList) {
-            for (cartItem in cartList) {
-                if (product.product_id == cartItem.product_id) {
-                    cartItem.stock_quantity = product.stock_quantity
-                }
-            }
-        }
+
         mCartItemsList = cartList
 
         rv_checkout_cart_list_items.layoutManager = LinearLayoutManager(this@CheckoutActivity)
@@ -134,8 +129,7 @@ class CheckoutActivity : BaseActivity() {
 
     private fun getProductList() {
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getAllTrendingProductsList(this@CheckoutActivity)
-        FireStoreClass().getAllFeatureProductsList(this@CheckoutActivity)
+        FireStoreClass().getAllProductsList(this@CheckoutActivity)
     }
 
     private fun setupActionBar() {
@@ -149,6 +143,4 @@ class CheckoutActivity : BaseActivity() {
         }
         toolbar_checkout_activity.setNavigationOnClickListener { onBackPressed() }
     }
-
-
 }

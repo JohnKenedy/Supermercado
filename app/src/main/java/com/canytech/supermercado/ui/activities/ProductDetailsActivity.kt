@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.CartItem
-import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.models.Product
 import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_feature_product.*
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_product_detail.*
 class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
 
     private var mProductId: String = ""
-    private lateinit var mProductDetails: ProductTrending
+    private lateinit var mProductDetails: Product
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,6 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
         }
 
         getProductDetails()
-        getFeatureProductsDetails()
 
         btn_add_to_cart.setOnClickListener(this)
         btn_go_to_cart.setOnClickListener(this)
@@ -42,10 +41,6 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
         FireStoreClass().getProductsDetails(this, mProductId)
     }
 
-    private fun getFeatureProductsDetails() {
-        FireStoreClass().getFeatureProductsDetails(this, mProductId)
-    }
-
     fun productExistsInCart() {
         hideProgressDialog()
         icon_add_to_cart.visibility = View.GONE
@@ -53,7 +48,7 @@ class ProductDetailsActivity : BaseActivity(), View.OnClickListener {
         btn_go_to_cart.visibility = View.VISIBLE
     }
 
-    fun productDetailsSuccess(product: ProductTrending) {
+    fun productDetailsSuccess(product: Product) {
         mProductDetails = product
         hideProgressDialog()
         GlideLoader(this@ProductDetailsActivity).loadProductPicture(

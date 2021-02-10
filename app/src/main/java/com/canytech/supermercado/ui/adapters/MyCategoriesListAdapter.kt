@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.canytech.supermercado.R
 import com.canytech.supermercado.models.ProductCategories
-import com.canytech.supermercado.models.ProductTrending
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_categories.view.*
-import kotlinx.android.synthetic.main.item_list_layout.view.*
 
 open class MyCategoriesListAdapter(
     private val context: Context,

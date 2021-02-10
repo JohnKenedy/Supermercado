@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.ProductCategories
-import com.canytech.supermercado.models.ProductFeature
-import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.models.Product
 import com.canytech.supermercado.ui.adapters.MyCategoriesListAdapter
-import com.canytech.supermercado.ui.adapters.MyFeatureListAdapter
 import com.canytech.supermercado.ui.adapters.MyTrendingListAdapter
 import kotlinx.android.synthetic.main.fragment_products.*
 
@@ -20,7 +18,7 @@ class ProductsFragment : BaseFragment() {
 
 //    private lateinit var homeViewModel: HomeViewModel
 
-    fun successProductsListFromFireStore(productsList: ArrayList<ProductTrending>) {
+    fun successProductsListFromFireStore(productsList: ArrayList<Product>) {
         hideProgressDialog()
 
         rv_trending.layoutManager =
@@ -32,26 +30,13 @@ class ProductsFragment : BaseFragment() {
 
     private fun getProductsListFromFireStore() {
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getTrendingProductsList(this)
-    }
-
-    private fun getFeatureProductsListFromFireStore() {
-        FireStoreClass().getFeatureProductsList(this)
+        FireStoreClass().getProductsList(this)
     }
 
     private fun getCategoriesListFromFireStore() {
         FireStoreClass().getCategoriesList(this)
     }
 
-    fun successFeatureProductsListFromFireStore(productsFeatureList: ArrayList<ProductFeature>) {
-        hideProgressDialog()
-
-        rv_feature.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        rv_feature.setHasFixedSize(true)
-        val adapterFeatureProducts = MyFeatureListAdapter(requireActivity(), productsFeatureList)
-        rv_feature.adapter = adapterFeatureProducts
-    }
 
     fun successCategoriesListFromFireStore(categoriesList: ArrayList<ProductCategories>) {
         hideProgressDialog()
@@ -67,7 +52,6 @@ class ProductsFragment : BaseFragment() {
         super.onResume()
         getProductsListFromFireStore()
         getCategoriesListFromFireStore()
-        getFeatureProductsListFromFireStore()
     }
 
     override fun onCreateView(

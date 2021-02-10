@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.canytech.supermercado.R
-import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.models.Product
 import com.canytech.supermercado.ui.activities.ProductDetailsActivity
 import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_list_layout.view.*
 
 open class MyTrendingListAdapter(
     private val context: Context,
-    private var list: ArrayList<ProductTrending>
+    private var list: ArrayList<Product>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -25,6 +25,7 @@ open class MyTrendingListAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val model = list[position]
+
 
         if (holder is MyViewHolder){
             GlideLoader(context).loadProductPicture(model.image, holder.itemView.item_img_product)

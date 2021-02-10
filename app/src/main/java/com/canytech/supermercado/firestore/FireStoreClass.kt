@@ -149,10 +149,6 @@ class FireStoreClass {
                         is AddTrendingProductActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
-                        is AddFeatureProductActivity -> {
-                            activity.imageFeatureUploadSuccess(uri.toString())
-                        }
-
                     }
                 }
         }
@@ -163,9 +159,6 @@ class FireStoreClass {
                         activity.hideProgressDialog()
                     }
                     is AddTrendingProductActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                    is AddFeatureProductActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -180,11 +173,11 @@ class FireStoreClass {
 
     fun uploadTrendingProductDetails(
         activity: AddTrendingProductActivity,
-        productTrendingInfo: ProductTrending
+        productInfo: Product
     ) {
         mFireStore.collection(Constants.PRODUCTS)
             .document()
-            .set(productTrendingInfo, SetOptions.merge())
+            .set(productInfo, SetOptions.merge())
             .addOnSuccessListener {
                 activity.productUploadSuccess()
             }
@@ -236,18 +229,54 @@ class FireStoreClass {
             }
     }
 
-    fun placeOrder(activity: CheckoutActivity, order: Order) {
+    fun updateTrendingAllDetails(activity: CheckoutActivity, cartList: ArrayList<CartItem>) {
+        val writeBatch = mFireStore.batch()
+
+        for (cartItem in cartList) {
+            val productHashMap = HashMap<String, Any>()
+
+            productHashMap[Constants.STOCK_QUANTITY] =
+                (cartItem.stock_quantity.toInt() - cartItem.cart_quantity.toInt()).toString()
+
+            val documentReference = mFireStore.collection(Constants.PRODUCTS)
+                .document(cartItem.product_id)
+
+            writeBatch.update(documentReference, productHashMap)
+        }
+
+        for (cartItem in cartList) {
+            val documentReference = mFireStore.collection(Constants.CART_ITEMS)
+                .document(cartItem.id)
+            writeBatch.delete(documentReference)
+        }
+
+        writeBatch.commit().addOnSuccessListener {
+            activity.allDetailsUpdateSuccessfully()
+
+        }.addOnFailureListener { e ->
+            activity.hideProgressDialog()
+            Log.e(activity.javaClass.simpleName,
+                "Error while updating all the details after order placed", e)
+        }
+    }
+
+
+
+    fun placeTrendingOrder(activity: CheckoutActivity, order: Order) {
         mFireStore.collection(Constants.ORDERS)
             .document()
             .set(order, SetOptions.merge())
             .addOnSuccessListener {
-                activity.orderPlacedSuccess()
+                activity.orderTrendingPlacedSuccess()
             }
             .addOnFailureListener { e ->
                 activity.hideProgressDialog()
                 Log.e(activity.javaClass.simpleName, "Error while placing an order.", e)
             }
     }
+
+
+
 
     fun updateMyCart(context: Context, cart_id: String, itemHashMap: HashMap<String, Any>) {
         mFireStore.collection(Constants.CART_ITEMS)
@@ -294,15 +323,15 @@ class FireStoreClass {
             }
     }
 
-    fun getTrendingProductsList(fragment: Fragment) {
+    fun getProductsList(fragment: Fragment) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Products List", document.documents.toString())
-                val productsList: ArrayList<ProductTrending> = ArrayList()
+                val productsList: ArrayList<Product> = ArrayList()
                 for (i in document.documents) {
 
-                    val product = i.toObject(ProductTrending::class.java)
+                    val product = i.toObject(Product::class.java)
                     product!!.product_id = i.id
 
                     productsList.add(product)
@@ -316,24 +345,6 @@ class FireStoreClass {
             }
     }
 
-    fun uploadFeatureProductDetails(
-        activity: AddFeatureProductActivity,
-        productFeatureInfo: ProductFeature
-    ) {
-        mFireStore.collection(Constants.FEATURES)
-            .document()
-            .set(productFeatureInfo, SetOptions.merge())
-            .addOnSuccessListener {
-                activity.productFeatureUploadSuccess()
-            }
-            .addOnFailureListener { e ->
-                activity.hideProgressDialog()
-                Log.e(
-                    activity.javaClass.simpleName,
-                    "Error while uploading the product details.", e
-                )
-            }
-    }
 
     fun addCartItems(activity: ProductDetailsActivity, addToCart: CartItem) {
         mFireStore.collection(Constants.CART_ITEMS)
@@ -352,22 +363,6 @@ class FireStoreClass {
             }
     }
 
-    fun getFeatureProductsDetails(activity: ProductDetailsActivity, productId: String) {
-        mFireStore.collection(Constants.FEATURES)
-            .document(productId)
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e(activity.javaClass.simpleName, document.toString())
-                val product = document.toObject(ProductTrending::class.java)
-                if (product != null) {
-                    activity.productDetailsSuccess(product)
-                }
-            }
-            .addOnFailureListener { e ->
-                activity.hideProgressDialog()
-                Log.e(activity.javaClass.simpleName, "Error while getting the product details,", e)
-            }
-    }
 
     fun getProductsDetails(activity: ProductDetailsActivity, productId: String) {
         mFireStore.collection(Constants.PRODUCTS)
@@ -375,7 +370,7 @@ class FireStoreClass {
             .get()
             .addOnSuccessListener { document ->
                 Log.e(activity.javaClass.simpleName, document.toString())
-                val product = document.toObject(ProductTrending::class.java)
+                val product = document.toObject(Product::class.java)
                 if (product != null) {
                     activity.productDetailsSuccess(product)
                 }
@@ -410,22 +405,22 @@ class FireStoreClass {
             }
     }
 
-    fun getAllTrendingProductsList(activity: Activity) {
+    fun getAllProductsList(activity: Activity) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document ->
 
                 Log.e("Trending List", document.documents.toString())
-                val trendingList: ArrayList<ProductTrending> = ArrayList()
+                val trendingList: ArrayList<Product> = ArrayList()
                 for (i in document.documents) {
 
-                    val productTrending = i.toObject(ProductTrending::class.java)
+                    val productTrending = i.toObject(Product::class.java)
                     productTrending!!.product_id = i.id
                     trendingList.add(productTrending)
                 }
                 when (activity) {
                     is CartListActivity -> {
-                        activity.successTrendingProductsListFromFireStore(trendingList)
+                        activity.successProductsListFromFireStore(trendingList)
                     }
                     is CheckoutActivity -> {
                         activity.successTrendingProductsListFromFireStore(trendingList)
@@ -442,73 +437,6 @@ class FireStoreClass {
                 }
 
                 Log.e("Get Trending List", "Error while getting all product list.", e)
-            }
-    }
-
-
-    fun getAllFeatureProductsList(activity: Activity) {
-        mFireStore.collection(Constants.FEATURES)
-            .get()
-            .addOnSuccessListener { document ->
-
-                Log.e("Trending List", document.documents.toString())
-                val featureList: ArrayList<ProductFeature> = ArrayList()
-                for (i in document.documents) {
-
-                    val productFeature = i.toObject(ProductFeature::class.java)
-                    productFeature!!.product_id = i.id
-                    featureList.add(productFeature)
-                }
-                when (activity) {
-                    is CartListActivity -> {
-                        activity.successFeatureProductsListFromFireStore(featureList)
-                    }
-                    is CheckoutActivity -> {
-                        activity.successFeatureProductsListFromFireStore(featureList)
-                    }
-
-                }
-            }.addOnFailureListener { e ->
-                when (activity) {
-                    is CartListActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                    is CheckoutActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                }
-
-                Log.e("Get Trending List", "Error while getting all product list.", e)
-            }
-    }
-
-
-    fun getFeatureProductsList(fragment: Fragment) {
-        mFireStore.collection(Constants.FEATURES)
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e(
-                    "Products Feature List",
-                    document.documents.toString()
-                )
-                val productsFeatureList: ArrayList<ProductFeature> =
-                    ArrayList()
-                for (i in document.documents) {
-
-                    val productFeature =
-                        i.toObject(ProductFeature::class.java)
-                    productFeature!!.product_id = i.id
-
-                    productsFeatureList.add(productFeature)
-                }
-
-                when (fragment) {
-                    is ProductsFragment -> {
-                        fragment.successFeatureProductsListFromFireStore(
-                            productsFeatureList
-                        )
-                    }
-                }
             }
     }
 

@@ -8,16 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.CartItem
-import com.canytech.supermercado.models.ProductFeature
-import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.models.Product
 import com.canytech.supermercado.ui.adapters.CartItemsListAdapter
 import com.canytech.supermercado.utils.Constants
 import kotlinx.android.synthetic.main.activity_cart_list.*
 
 class CartListActivity : BaseActivity() {
 
-    private lateinit var mProductTrendingList: ArrayList<ProductTrending>
-    private lateinit var mProductFeatureList: ArrayList<ProductFeature>
+    private lateinit var mProductList: ArrayList<Product>
     private lateinit var mCartListItems: ArrayList<CartItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,29 +33,18 @@ class CartListActivity : BaseActivity() {
     fun successCartItemsList(cartList: ArrayList<CartItem>) {
         hideProgressDialog()
 
-        for (productTrending in mProductTrendingList) {
+        for (product in mProductList) {
             for (cartItem in cartList) {
-                if (productTrending.product_id == cartItem.product_id) {
-                    cartItem.stock_quantity = productTrending.stock_quantity
+                if (product.product_id == cartItem.product_id) {
+                    cartItem.stock_quantity = product.stock_quantity
 
-                    if (productTrending.stock_quantity.toInt() == 0) {
-                        cartItem.cart_quantity = productTrending.stock_quantity
+                    if (product.stock_quantity.toInt() == 0) {
+                        cartItem.cart_quantity = product.stock_quantity
                     }
                 }
             }
         }
 
-        for (productFeature in mProductFeatureList) {
-            for (cartItem in cartList) {
-                if (productFeature.product_id == cartItem.product_id) {
-                    cartItem.stock_quantity = productFeature.stock_quantity
-
-                    if (productFeature.stock_quantity.toInt() == 0) {
-                        cartItem.cart_quantity = productFeature.stock_quantity
-                    }
-                }
-            }
-        }
 
         mCartListItems = cartList
 
@@ -102,27 +89,16 @@ class CartListActivity : BaseActivity() {
         }
     }
 
-    fun successTrendingProductsListFromFireStore(trendingList: ArrayList<ProductTrending>) {
+    fun successProductsListFromFireStore(list: ArrayList<Product>) {
         hideProgressDialog()
-        mProductTrendingList = trendingList
+        mProductList = list
 
         getCartItemsList()
     }
 
-    fun successFeatureProductsListFromFireStore(featureList: ArrayList<ProductFeature>) {
-        hideProgressDialog()
-        mProductFeatureList = featureList
-
-        getCartItemsList()
-    }
-
-    private fun getProductsTrendingList() {
+    private fun getProductsList() {
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getAllTrendingProductsList(this)
-    }
-
-    private fun getProductsFeatureList() {
-        FireStoreClass().getAllFeatureProductsList(this)
+        FireStoreClass().getAllProductsList(this)
     }
 
     private fun getCartItemsList() {
@@ -138,8 +114,8 @@ class CartListActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         //getCartItemsList()
-        getProductsTrendingList()
-        getProductsFeatureList()
+        getProductsList()
+
     }
 
     fun itemRemovedSuccess() {

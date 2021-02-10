@@ -12,7 +12,7 @@
         tools:context=".ui.activities.AddTrendingProductActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_add_feature_product_activity"
+            android:id="@+id/toolbar_add_Feature_product_activity"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/yellow"
@@ -20,21 +20,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@color/no_color">
-
-            <TextView
-                android:id="@+id/textView_title_add_feature_product"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:fontFamily="@font/montserrat_medium"
-                android:gravity="center"
-                android:text="@string/action_add_feature_product"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-        </androidx.appcompat.widget.Toolbar>
+            app:titleTextColor="@color/no_color" />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:text="@string/action_add_feature_product"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_add_Feature_product_activity"
+            app:layout_constraintTop_toTopOf="@id/toolbar_add_Feature_product_activity"
+            app:layout_constraintEnd_toEndOf="@id/toolbar_add_Feature_product_activity"
+            app:layout_constraintStart_toStartOf="@id/toolbar_add_Feature_product_activity"
+            android:elevation="6dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <FrameLayout
             android:id="@+id/frameLayout_product_feature_image"
@@ -42,10 +44,10 @@
             android:layout_height="250dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_add_feature_product_activity">
+            app:layout_constraintTop_toBottomOf="@id/toolbar_add_Feature_product_activity">
 
             <ImageView
-                android:id="@+id/imageView_product_feature_image"
+                android:id="@+id/iv_product_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/yellow"
@@ -57,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:padding="16dp"
-                android:src="@drawable/ic_baseline_add_location_white" />
+                android:src="@drawable/ic_vector_add_photo" />
 
         </FrameLayout>
 

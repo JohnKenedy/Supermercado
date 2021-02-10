@@ -15,7 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.supermercado.R
 import com.canytech.supermercado.firestore.FireStoreClass
-import com.canytech.supermercado.models.ProductTrending
+import com.canytech.supermercado.models.Product
 import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_product.*
@@ -110,7 +110,7 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
             Constants.MYGROCERYSTORE_PREFERENCES, Context.MODE_PRIVATE)
             .getString(Constants.LOGGED_IN_USERNAME, "")!!
 
-        val product = ProductTrending(
+        val product = Product(
             FireStoreClass().getCurrentUserID(),
             username,
             edit_text_product_title.text.toString().trim { it <= ' ' },

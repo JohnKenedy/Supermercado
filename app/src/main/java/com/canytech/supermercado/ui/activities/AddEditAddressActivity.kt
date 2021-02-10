@@ -30,30 +30,30 @@ class AddEditAddressActivity : BaseActivity() {
                 textView_add_edit_address_title.text = resources.getString(R.string.title_edit_address)
                 btn_submit_address.text = resources.getString(R.string.btn_lbl_update)
 
-                edit_text_full_name.setText(mAddressDetails?.name)
-                edit_text_phone_number.setText(mAddressDetails?.mobileNumber)
-                edit_text_address.setText(mAddressDetails?.address)
-                edit_text_zip_code.setText(mAddressDetails?.zipCode)
-                edit_text_additional_notes.setText(mAddressDetails?.additionalNote)
+                et_full_name.setText(mAddressDetails?.name)
+                et_phone_number.setText(mAddressDetails?.mobileNumber)
+                et_address.setText(mAddressDetails?.address)
+                et_zip_code.setText(mAddressDetails?.zipCode)
+                et_additional_note.setText(mAddressDetails?.additionalNote)
 
                 when (mAddressDetails?.type) {
                     Constants.HOME -> {
-                        radio_btn_home.isChecked = true
+                        rb_home.isChecked = true
                     }
                     Constants.OFFICE -> {
-                        radio_btn_office.isChecked = true
+                        rb_office.isChecked = true
                     }
                     else -> {
-                        radio_btn_other.isChecked = true
+                        rb_other.isChecked = true
                         til_other_details.visibility = View.VISIBLE
-                        edit_text_other_details.setText(mAddressDetails?.otherDetails)
+                        et_other_details.setText(mAddressDetails?.otherDetails)
                     }
                 }
             }
         }
 
         rg_type.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId == R.id.radio_btn_other) {
+            if (checkedId == R.id.rb_other) {
                 til_other_details.visibility = View.VISIBLE
             } else {
                 til_other_details.visibility = View.GONE
@@ -79,22 +79,22 @@ class AddEditAddressActivity : BaseActivity() {
     }
 
     private fun saveAddressToFirestore() {
-        val fullName: String = edit_text_full_name.text.toString().trim { it <= ' ' }
-        val phoneNumber: String = edit_text_phone_number.text.toString().trim { it <= ' ' }
-        val address: String = edit_text_address.text.toString().trim { it <= ' ' }
-        val zipCode: String = edit_text_zip_code.text.toString().trim { it <= ' ' }
-        val additionalNote: String = edit_text_additional_notes.text.toString().trim { it <= ' ' }
-        val otherDetails: String = edit_text_other_details.text.toString().trim { it <= ' ' }
+        val fullName: String = et_full_name.text.toString().trim { it <= ' ' }
+        val phoneNumber: String = et_phone_number.text.toString().trim { it <= ' ' }
+        val address: String = et_address.text.toString().trim { it <= ' ' }
+        val zipCode: String = et_zip_code.text.toString().trim { it <= ' ' }
+        val additionalNote: String = et_additional_note.text.toString().trim { it <= ' ' }
+        val otherDetails: String = et_other_details.text.toString().trim { it <= ' ' }
 
         if (validateData()) {
 
             showProgressDialog(resources.getString(R.string.please_wait))
 
             val addressType: String = when {
-                radio_btn_home.isChecked -> {
+                rb_home.isChecked -> {
                     Constants.HOME
                 }
-                radio_btn_office.isChecked -> {
+                rb_office.isChecked -> {
                     Constants.OFFICE
                 }
                 else -> {
@@ -143,36 +143,36 @@ class AddEditAddressActivity : BaseActivity() {
     private fun validateData(): Boolean {
         return when {
 
-            TextUtils.isEmpty(edit_text_full_name.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_full_name.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     resources.getString(R.string.error_msg_enter_full_name), true
                 )
                 false
             }
 
-            TextUtils.isEmpty(edit_text_phone_number.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_phone_number.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     resources.getString(R.string.error_msg_enter_phone_number), true
                 )
                 false
             }
 
-            TextUtils.isEmpty(edit_text_address.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_address.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     resources.getString(R.string.error_msg_enter_address), true
                 )
                 false
             }
 
-            TextUtils.isEmpty(edit_text_zip_code.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_zip_code.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     resources.getString(R.string.error_msg_enter_zip_code), true
                 )
                 false
             }
 
-            radio_btn_other.isChecked && TextUtils.isEmpty(
-                edit_text_zip_code.text.toString().trim { it <= ' ' }) -> {
+            rb_other.isChecked && TextUtils.isEmpty(
+                et_zip_code.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     resources.getString(R.string.error_msg_enter_zip_code), true
                 )

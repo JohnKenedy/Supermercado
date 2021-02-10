@@ -17,10 +17,10 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        text_view_login_forgot_password.setOnClickListener(this)
-        btn_login_sing_in.setOnClickListener(this)
+        tv_forgot_password.setOnClickListener(this)
+        btn_login.setOnClickListener(this)
         btn_login_sing_google.setOnClickListener(this)
-        text_view_login_sing_up.setOnClickListener(this)
+        tv_register.setOnClickListener(this)
 
     }
 
@@ -42,11 +42,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         if (view != null) {
             when (view.id) {
 
-                R.id.text_view_login_forgot_password -> {
+                R.id.tv_forgot_password -> {
                     val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.btn_login_sing_in -> {
+                R.id.btn_login -> {
                     loginRegisteredUser()
                 }
 
@@ -58,7 +58,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     ).show()
                 }
 
-                R.id.text_view_login_sing_up -> {
+                R.id.tv_register -> {
                     val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
                     startActivity(intent)
                 }
@@ -68,12 +68,12 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun validateLoginDetails(): Boolean {
         return when {
-            TextUtils.isEmpty(edit_text_login_email.text.toString().trim() { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_email.text.toString().trim() { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.error_msg_enter_email), true)
                 false
             }
 
-            TextUtils.isEmpty(edit_text_login_password.text.toString().trim() { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_password.text.toString().trim() { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.error_msg_enter_password), true)
                 false
             }
@@ -89,8 +89,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
             showProgressDialog(resources.getString(R.string.please_wait))
 
-            val email = edit_text_login_email.text.toString().trim { it <= ' ' }
-            val password = edit_text_login_password.text.toString().trim { it <= ' ' }
+            val email = et_email.text.toString().trim { it <= ' ' }
+            val password = et_password.text.toString().trim { it <= ' ' }
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
