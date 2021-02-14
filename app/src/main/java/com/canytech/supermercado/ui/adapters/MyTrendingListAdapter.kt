@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_list_layout.view.*
 
 open class MyTrendingListAdapter(
     private val context: Context,
-    private var list: ArrayList<Product>
+    private var list: ArrayList<Product>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -40,7 +40,6 @@ open class MyTrendingListAdapter(
             intent.putExtra(Constants.EXTRA_PRODUCT_ID, model.product_id)
             context.startActivity(intent)
         }
-
     }
 
     override fun getItemCount(): Int {

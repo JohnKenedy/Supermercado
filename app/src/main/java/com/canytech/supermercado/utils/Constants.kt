@@ -13,6 +13,7 @@ object Constants {
     const val PRODUCTS: String = "products"
     const val FEATURES: String = "features"
     const val CATEGORIES: String ="category"
+    const val TYPE_RECYCLER: String = "recycler"
 
     const val MYGROCERYSTORE_PREFERENCES: String = "MyGroceryStorePrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"

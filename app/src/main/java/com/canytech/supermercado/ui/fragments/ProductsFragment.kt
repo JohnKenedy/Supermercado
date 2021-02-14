@@ -18,19 +18,33 @@ class ProductsFragment : BaseFragment() {
 
 //    private lateinit var homeViewModel: HomeViewModel
 
-    fun successProductsListFromFireStore(productsList: ArrayList<Product>) {
+    fun successTrendingProductsListFromFireStore(trendingList: ArrayList<Product>) {
         hideProgressDialog()
 
         rv_trending.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rv_trending.setHasFixedSize(true)
-        val adapterProducts = MyTrendingListAdapter(requireActivity(), productsList)
+        val adapterProducts = MyTrendingListAdapter(requireActivity(), trendingList)
         rv_trending.adapter = adapterProducts
     }
 
-    private fun getProductsListFromFireStore() {
+    fun successFeatureProductsListFromFireStore(featureList: ArrayList<Product>) {
+        hideProgressDialog()
+
+        rv_feature.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        rv_feature.setHasFixedSize(true)
+        val adapterProducts = MyTrendingListAdapter(requireActivity(), featureList)
+        rv_feature.adapter = adapterProducts
+    }
+
+    private fun getTrendingProductsListFromFireStore() {
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getProductsList(this)
+        FireStoreClass().getTrendingProductsList(this)
+    }
+
+    private fun getFeatureProductsListFromFireStore() {
+        FireStoreClass().getFeatureProductsList(this)
     }
 
     private fun getCategoriesListFromFireStore() {
@@ -50,8 +64,9 @@ class ProductsFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        getProductsListFromFireStore()
         getCategoriesListFromFireStore()
+        getTrendingProductsListFromFireStore()
+        getFeatureProductsListFromFireStore()
     }
 
     override fun onCreateView(

@@ -323,23 +323,47 @@ class FireStoreClass {
             }
     }
 
-    fun getProductsList(fragment: Fragment) {
+    fun getTrendingProductsList(fragment: Fragment) {
         mFireStore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.TYPE_RECYCLER, "Trending List")
             .get()
             .addOnSuccessListener { document ->
                 Log.e("Products List", document.documents.toString())
-                val productsList: ArrayList<Product> = ArrayList()
+                val trendingList: ArrayList<Product> = ArrayList()
                 for (i in document.documents) {
 
                     val product = i.toObject(Product::class.java)
                     product!!.product_id = i.id
 
-                    productsList.add(product)
+                    trendingList.add(product)
                 }
 
                 when (fragment) {
                     is ProductsFragment -> {
-                        fragment.successProductsListFromFireStore(productsList)
+                        fragment.successTrendingProductsListFromFireStore(trendingList)
+                    }
+                }
+            }
+    }
+
+    fun getFeatureProductsList(fragment: Fragment) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.TYPE_RECYCLER, "Feature List")
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products List", document.documents.toString())
+                val featureList: ArrayList<Product> = ArrayList()
+                for (i in document.documents) {
+
+                    val product = i.toObject(Product::class.java)
+                    product!!.product_id = i.id
+
+                    featureList.add(product)
+                }
+
+                when (fragment) {
+                    is ProductsFragment -> {
+                        fragment.successFeatureProductsListFromFireStore(featureList)
                     }
                 }
             }

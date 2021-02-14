@@ -43,7 +43,7 @@ class CheckoutActivity : BaseActivity() {
         getProductList()
 
         btn_place_order.setOnClickListener {
-            placeTrendingAnOrder()
+            placeAnOrder()
         }
     }
 
@@ -74,7 +74,7 @@ class CheckoutActivity : BaseActivity() {
         FireStoreClass().getCartList(this@CheckoutActivity)
     }
 
-    private fun placeTrendingAnOrder() {
+    private fun placeAnOrder() {
         showProgressDialog(resources.getString(R.string.please_wait))
         if (mAddressDetails != null) {
             val order = Order(
@@ -86,6 +86,7 @@ class CheckoutActivity : BaseActivity() {
                 mSubTotal.toString(),
                 "10.0",
                 mTotalAmount.toString(),
+                System.currentTimeMillis()
             )
 
             FireStoreClass().placeTrendingOrder(this, order)
