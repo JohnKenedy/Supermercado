@@ -83,6 +83,11 @@ class FireStoreClass {
                     is SettingsActivity -> {
                         activity.userDetailsSuccess(user)
                     }
+                    is CheckoutActivity -> {
+                        mFireStore.collection(Constants.USER_ID)
+                            .whereEqualTo("image", String)
+                            .get()
+                    }
                 }
             }
 
@@ -93,6 +98,9 @@ class FireStoreClass {
                         activity.hideProgressDialog()
                     }
                     is SettingsActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is CheckoutActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -262,7 +270,7 @@ class FireStoreClass {
 
 
 
-    fun placeTrendingOrder(activity: CheckoutActivity, order: Order) {
+    fun placeOrder(activity: CheckoutActivity, order: Order) {
         mFireStore.collection(Constants.ORDERS)
             .document()
             .set(order, SetOptions.merge())

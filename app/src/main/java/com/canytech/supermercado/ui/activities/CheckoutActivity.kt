@@ -9,8 +9,11 @@ import com.canytech.supermercado.firestore.FireStoreClass
 import com.canytech.supermercado.models.*
 import com.canytech.supermercado.ui.adapters.CartItemsListAdapter
 import com.canytech.supermercado.utils.Constants
+import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_cart_list.*
 import kotlinx.android.synthetic.main.activity_checkout.*
+import kotlinx.android.synthetic.main.activity_user_profile.*
+import kotlinx.android.synthetic.main.item_list_layout.*
 
 class CheckoutActivity : BaseActivity() {
 
@@ -89,10 +92,13 @@ class CheckoutActivity : BaseActivity() {
                 System.currentTimeMillis()
             )
 
-            FireStoreClass().placeTrendingOrder(this, order)
+            FireStoreClass().placeOrder(this, order)
         }
     }
 
+    private fun getUserDetails() {
+        FireStoreClass().getUserDetails(this)
+    }
 
     fun successCartItemsList(cartList: ArrayList<CartItem>) {
         hideProgressDialog()
